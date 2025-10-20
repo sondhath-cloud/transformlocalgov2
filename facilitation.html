@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facilitation - TransformLocalGov</title>
+    <meta name="description"
+        content="Professional facilitation services for strategic planning, team building, and organizational development. Expert guidance for productive meetings and workshops.">
+    <link rel="icon" type="image/png" href="assets/images/TLGLogo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+    
+    
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px;">
+                    <img src="assets/images/TLGLogo.png" alt="TransformLocalGov Logo" style="height: 40px; width: auto;">
+                    <span class="logo-text">TransformLocalGov</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="facilitation.html" class="nav-link active">Facilitation</a>
+                </li>
+                <li class="nav-item">
+                    <a href="digital-adoption.html" class="nav-link">Digital Adopt</a>
+                </li>
+                <li class="nav-item">
+                    <a href="custom-tools.html" class="nav-link">Web/Apps</a>
+                </li>
+                <li class="nav-item">
+                    <a href="order.html" class="nav-link">Order</a>
+                </li>
+                <li class="nav-item">
+                    <a href="resources.html" class="nav-link">Resources</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Facilitation Hero Section with Background Image -->
+    <section class="facilitation-hero" style="background-image: url('assets/images/facilitation.jpeg');">
+        <div class="facilitation-hero-overlay">
+            <div class="facilitation-hero-content">
+                <h1 class="hero-title">Strategic planning and meetings that achieve results.</h1>
+                <p class="hero-subtitle">Expert facilitation that makes your strategic planning sessions, team meetings, and workshops more productive and engaging. We help you achieve real results.</p>
+                
+                <!-- Service Type Selection -->
+                <div class="service-type-selection" style="margin-top: 2rem;">
+                    <div class="service-type-dropdown">
+                        <select id="serviceType" onchange="showServiceOptions()">
+                            <option value="">Choose a facilitation type...</option>
+                            <option value="strategic-planning">Strategic Planning</option>
+                            <option value="teambuilding-retreat">Teambuilding or Retreat</option>
+                            <option value="instructor-training">Instructor-Led Training</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilitation Section -->
+    <section id="facilitation" class="website-request modern-white" style="display: none;">
+        <div class="container">
+            <div class="request-content">
+
+                <!-- Strategic Planning Options (Hidden by default) -->
+                <div id="strategic-planning-options" class="service-options" style="display: none;">
+                <div class="service-tiers-section">
+                        <h2 class="section-title">Strategic Planning Services</h2>
+                    <div class="service-tiers">
+                        <div class="service-tier basic-tier">
+                            <div class="tier-description">
+                                <p>We facilitate strategic planning sessions and other meetings as listed below that point your team toward desired results. Make selections to see more details in your custom draft agenda.</p>
+                            </div>
+                                
+                <div class="strategic-planning-services">
+                    <div class="services-menu-three-column">
+                        <div class="services-column">
+                            <ul class="strategic-features">
+                                <li><input type="checkbox" id="vision-mission" onchange="toggleAgendaItem('vision-mission')"> <label for="vision-mission">Vision and mission development</label></li>
+                                <li><input type="checkbox" id="swot-analysis" onchange="toggleAgendaItem('swot-analysis')"> <label for="swot-analysis">SWOT analysis facilitation</label></li>
+                                <li><input type="checkbox" id="goal-setting" onchange="toggleAgendaItem('goal-setting')"> <label for="goal-setting">Goal setting workshops</label></li>
+                                <li><input type="checkbox" id="priority-identification" onchange="toggleAgendaItem('priority-identification')"> <label for="priority-identification">Priority identification</label></li>
+                                <li><input type="checkbox" id="action-planning" onchange="toggleAgendaItem('action-planning')"> <label for="action-planning">Action planning sessions</label></li>
+                                <li><input type="checkbox" id="stakeholder-alignment" onchange="toggleAgendaItem('stakeholder-alignment')"> <label for="stakeholder-alignment">Stakeholder alignment</label></li>
+                                <li><input type="checkbox" id="strategic-framework" onchange="toggleAgendaItem('strategic-framework')"> <label for="strategic-framework">Strategic framework development</label></li>
+                            </ul>
+                        </div>
+                        <div class="services-column">
+                            <ul class="strategic-features">
+                                <li><input type="checkbox" id="implementation-roadmap" onchange="toggleAgendaItem('implementation-roadmap')"> <label for="implementation-roadmap">Implementation roadmapping</label></li>
+                                <li><input type="checkbox" id="success-metrics" onchange="toggleAgendaItem('success-metrics')"> <label for="success-metrics">Success metrics definition</label></li>
+                                <li><input type="checkbox" id="follow-up-planning" onchange="toggleAgendaItem('follow-up-planning')"> <label for="follow-up-planning">Follow-up session planning</label></li>
+                                <li><input type="checkbox" id="orientation" onchange="toggleAgendaItem('orientation')"> <label for="orientation">Orientation</label></li>
+                                <li><input type="checkbox" id="biweekly-meetings" onchange="toggleAgendaItem('biweekly-meetings')"> <label for="biweekly-meetings">Bi-weekly Project Meetings</label></li>
+                                <li><input type="checkbox" id="kickoff-meeting" onchange="toggleAgendaItem('kickoff-meeting')"> <label for="kickoff-meeting">Project Kickoff Meeting</label></li>
+                                <li><input type="checkbox" id="project-announcement" onchange="toggleAgendaItem('project-announcement')"> <label for="project-announcement">Project Announcement</label></li>
+                            </ul>
+                        </div>
+                        <div class="services-column">
+                            <ul class="strategic-features">
+                                <li><input type="checkbox" id="interviews" onchange="toggleAgendaItem('interviews')"> <label for="interviews">Interviews</label></li>
+                                <li><input type="checkbox" id="current-state-report" onchange="toggleAgendaItem('current-state-report')"> <label for="current-state-report">Current State Report</label></li>
+                                <li><input type="checkbox" id="midyear-review" onchange="toggleAgendaItem('midyear-review')"> <label for="midyear-review">Mid-year Review</label></li>
+                                <li><input type="checkbox" id="online-feedback" onchange="toggleAgendaItem('online-feedback')"> <label for="online-feedback">Online Feedback</label></li>
+                                <li><input type="checkbox" id="public-meeting" onchange="toggleAgendaItem('public-meeting')"> <label for="public-meeting">Public Meeting and Teambuilding for Elected Officials</label></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Draft Strategic Planning Agenda -->
+                <div id="draft-agenda" class="draft-agenda" style="display: none;">
+                    <h3>Draft Strategic Planning Agenda</h3>
+                    <div id="agenda-items" class="agenda-items">
+                        <p class="placeholder-text">Select services above to build your agenda</p>
+                    </div>
+                </div>
+                            </div>
+                        </div>
+                            </div>
+                        </div>
+
+                <!-- Teambuilding or Retreat Options (Hidden by default) -->
+                <div id="teambuilding-retreat-options" class="service-options" style="display: none;">
+                    <div class="service-tiers-section">
+                        <h2 class="section-title">Teambuilding and Retreat Services</h2>
+                        <div class="service-tiers">
+                            <div class="service-tier basic-tier">
+                            <div class="tier-description">
+                                    <p>We facilitate engaging teambuilding sessions and retreats on topics as listed below that strengthen collaboration and morale. Make selections to see more details in your custom draft agenda.</p>
+                            </div>
+                                
+                <div class="strategic-planning-services">
+                    <div class="services-menu-three-column">
+                        <div class="services-column">
+                            <ul class="strategic-features">
+                                <li><input type="checkbox" id="team-trust-building" onchange="toggleAgendaItem('team-trust-building')"> <label for="team-trust-building">Trust building exercises</label></li>
+                                <li><input type="checkbox" id="team-communication" onchange="toggleAgendaItem('team-communication')"> <label for="team-communication">Communication workshops</label></li>
+                                <li><input type="checkbox" id="team-conflict-resolution" onchange="toggleAgendaItem('team-conflict-resolution')"> <label for="team-conflict-resolution">Conflict resolution training</label></li>
+                                <li><input type="checkbox" id="team-values-alignment" onchange="toggleAgendaItem('team-values-alignment')"> <label for="team-values-alignment">Team values alignment</label></li>
+                                <li><input type="checkbox" id="team-goal-setting" onchange="toggleAgendaItem('team-goal-setting')"> <label for="team-goal-setting">Collaborative goal setting</label></li>
+                            </ul>
+                            </div>
+                        <div class="services-column">
+                            <ul class="strategic-features">
+                                <li><input type="checkbox" id="team-problem-solving" onchange="toggleAgendaItem('team-problem-solving')"> <label for="team-problem-solving">Problem solving activities</label></li>
+                                <li><input type="checkbox" id="team-leadership" onchange="toggleAgendaItem('team-leadership')"> <label for="team-leadership">Leadership development</label></li>
+                                <li><input type="checkbox" id="team-innovation" onchange="toggleAgendaItem('team-innovation')"> <label for="team-innovation">Innovation brainstorming</label></li>
+                                <li><input type="checkbox" id="team-retreat-planning" onchange="toggleAgendaItem('team-retreat-planning')"> <label for="team-retreat-planning">Retreat planning and design</label></li>
+                                <li><input type="checkbox" id="team-outdoor-activities" onchange="toggleAgendaItem('team-outdoor-activities')"> <label for="team-outdoor-activities">Outdoor team activities</label></li>
+                            </ul>
+                        </div>
+                        <div class="services-column">
+                            <ul class="strategic-features">
+                                <li><input type="checkbox" id="team-celebration" onchange="toggleAgendaItem('team-celebration')"> <label for="team-celebration">Success celebration planning</label></li>
+                                <li><input type="checkbox" id="team-wellness" onchange="toggleAgendaItem('team-wellness')"> <label for="team-wellness">Wellness and mindfulness</label></li>
+                                <li><input type="checkbox" id="team-culture" onchange="toggleAgendaItem('team-culture')"> <label for="team-culture">Culture building sessions</label></li>
+                                <li><input type="checkbox" id="team-feedback" onchange="toggleAgendaItem('team-feedback')"> <label for="team-feedback">360 feedback facilitation</label></li>
+                                <li><input type="checkbox" id="team-action-plans" onchange="toggleAgendaItem('team-action-plans')"> <label for="team-action-plans">Team action planning</label></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Draft Teambuilding Agenda -->
+                <div id="draft-agenda-teambuilding" class="draft-agenda" style="display: none;">
+                    <h3>Draft Teambuilding Agenda</h3>
+                    <div id="agenda-items-teambuilding" class="agenda-items">
+                        <p class="placeholder-text">Select services above to build your agenda</p>
+                    </div>
+                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Instructor-Led Training Options (Hidden by default) -->
+                <div id="instructor-training-options" class="service-options" style="display: none;">
+                    <div class="service-tiers-section">
+                        <h2 class="section-title">Instructor-Led Training Services</h2>
+                        <div class="service-tiers">
+                            <div class="service-tier basic-tier">
+                                <div class="tier-description">
+                                    <p>We develop and deliver expert-led training sessions that build skills and drive organizational performance. Make selections to see more details in your custom draft agenda.</p>
+                                </div>
+                                
+                <div class="strategic-planning-services">
+                    <div class="services-menu-three-column">
+                        <div class="services-column">
+                            <ul class="strategic-features">
+                                <li><input type="checkbox" id="train-leadership" onchange="toggleAgendaItem('train-leadership')"> <label for="train-leadership">Leadership fundamentals</label></li>
+                                <li><input type="checkbox" id="train-management" onchange="toggleAgendaItem('train-management')"> <label for="train-management">Management essentials</label></li>
+                                <li><input type="checkbox" id="train-communication" onchange="toggleAgendaItem('train-communication')"> <label for="train-communication">Effective communication</label></li>
+                                <li><input type="checkbox" id="train-presentation" onchange="toggleAgendaItem('train-presentation')"> <label for="train-presentation">Presentation skills</label></li>
+                                <li><input type="checkbox" id="train-facilitation" onchange="toggleAgendaItem('train-facilitation')"> <label for="train-facilitation">Facilitation techniques</label></li>
+                            </ul>
+                        </div>
+                        <div class="services-column">
+                            <ul class="strategic-features">
+                                <li><input type="checkbox" id="train-project-mgmt" onchange="toggleAgendaItem('train-project-mgmt')"> <label for="train-project-mgmt">Project management</label></li>
+                                <li><input type="checkbox" id="train-change-mgmt" onchange="toggleAgendaItem('train-change-mgmt')"> <label for="train-change-mgmt">Change management</label></li>
+                                <li><input type="checkbox" id="train-performance" onchange="toggleAgendaItem('train-performance')"> <label for="train-performance">Performance management</label></li>
+                                <li><input type="checkbox" id="train-coaching" onchange="toggleAgendaItem('train-coaching')"> <label for="train-coaching">Coaching and mentoring</label></li>
+                                <li><input type="checkbox" id="train-dei" onchange="toggleAgendaItem('train-dei')"> <label for="train-dei">Diversity equity and inclusion</label></li>
+                            </ul>
+                        </div>
+                        <div class="services-column">
+                            <ul class="strategic-features">
+                                <li><input type="checkbox" id="train-customer-service" onchange="toggleAgendaItem('train-customer-service')"> <label for="train-customer-service">Customer service excellence</label></li>
+                                <li><input type="checkbox" id="train-problem-solving" onchange="toggleAgendaItem('train-problem-solving')"> <label for="train-problem-solving">Problem solving and decision making</label></li>
+                                <li><input type="checkbox" id="train-time-mgmt" onchange="toggleAgendaItem('train-time-mgmt')"> <label for="train-time-mgmt">Time management</label></li>
+                                <li><input type="checkbox" id="train-emotional-intelligence" onchange="toggleAgendaItem('train-emotional-intelligence')"> <label for="train-emotional-intelligence">Emotional intelligence</label></li>
+                                <li><input type="checkbox" id="train-custom" onchange="toggleAgendaItem('train-custom')"> <label for="train-custom">Custom topic training</label></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Draft Training Agenda -->
+                <div id="draft-agenda-training" class="draft-agenda" style="display: none;">
+                    <h3>Draft Training Agenda</h3>
+                    <div id="agenda-items-training" class="agenda-items">
+                        <p class="placeholder-text">Select services above to build your agenda</p>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact CTA -->
+                <div id="cta-section" class="cta-section" style="display: none;">
+                    <h2 class="section-title">Ready to discuss your draft agenda?</h2>
+                    <p class="section-subtitle">Let's discuss how professional facilitation can help achieve results.</p>
+                    <div class="cta-button-container">
+                        <button onclick="openBookingModal()" class="btn btn-primary btn-large">View Available Dates</button>
+                    </div>
+                </div>
+
+                <!-- Booking Modal -->
+                <div id="bookingModal" class="booking-modal" style="display: none;">
+                    <div class="booking-modal-content">
+                        <span class="close-booking" onclick="closeBookingModal()">&times;</span>
+                        <h2>Available Dates</h2>
+                        <p>Select a preferred date to hold for your session:</p>
+                        <div class="booking-dates">
+                            <div class="date-option">
+                                <input type="radio" id="date1" name="bookingDate" value="2025-11-15">
+                                <label for="date1">November 15, 2025</label>
+                            </div>
+                            <div class="date-option">
+                                <input type="radio" id="date2" name="bookingDate" value="2025-11-22">
+                                <label for="date2">November 22, 2025</label>
+                            </div>
+                            <div class="date-option">
+                                <input type="radio" id="date3" name="bookingDate" value="2025-12-06">
+                                <label for="date3">December 6, 2025</label>
+                            </div>
+                            <div class="date-option">
+                                <input type="radio" id="date4" name="bookingDate" value="2025-12-13">
+                                <label for="date4">December 13, 2025</label>
+                            </div>
+                            <div class="date-option">
+                                <input type="radio" id="date5" name="bookingDate" value="2026-01-10">
+                                <label for="date5">January 10, 2026</label>
+                            </div>
+                            <div class="date-option">
+                                <input type="radio" id="date6" name="bookingDate" value="2026-01-17">
+                                <label for="date6">January 17, 2026</label>
+                            </div>
+                        </div>
+                        <div class="booking-form">
+                            <input type="text" id="contactName" class="glass-input" placeholder="Your Name" required>
+                            <input type="email" id="contactEmail" class="glass-input" placeholder="Your Email" required>
+                            <input type="tel" id="contactPhone" class="glass-input" placeholder="Your Phone">
+                        </div>
+                        <button onclick="submitBooking()" class="btn btn-primary btn-large">Hold Date</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2025 TransformLocalGov. All rights reserved.</p>
+                </div>
+                <div class="footer-middle">
+                    <a href="subscribe.html" class="footer-link">Payment</a>
+                    <a href="careers.html" class="footer-link">Careers</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/sondrahathaway/" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>
+                    <a href="https://github.com/sondhath-cloud" target="_blank" rel="noopener noreferrer" class="social-link">GitHub</a>
+                    <a href="https://www.youtube.com/@transformlocalgov" target="_blank" rel="noopener noreferrer" class="social-link">YouTube</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Service descriptions
+        const serviceDescriptions = {
+            'vision-mission': {
+                title: 'Vision and Mission Development',
+                description: 'Facilitate sessions to define your organization\'s vision and mission statements that guide strategic direction and inspire stakeholders.'
+            },
+            'swot-analysis': {
+                title: 'SWOT Analysis Facilitation',
+                description: 'Guide teams through comprehensive Strengths, Weaknesses, Opportunities, and Threats analysis to inform strategic decision-making.'
+            },
+            'goal-setting': {
+                title: 'Goal Setting Workshops',
+                description: 'Structured workshops to establish clear, measurable, and achievable goals that align with your strategic vision.'
+            },
+            'priority-identification': {
+                title: 'Priority Identification',
+                description: 'Help teams identify and prioritize initiatives based on impact, feasibility, and strategic importance.'
+            },
+            'action-planning': {
+                title: 'Action Planning Sessions',
+                description: 'Develop detailed action plans with timelines, responsibilities, and success metrics for strategic initiatives.'
+            },
+            'stakeholder-alignment': {
+                title: 'Stakeholder Alignment',
+                description: 'Facilitate sessions to ensure all stakeholders are aligned on strategic direction and understand their roles.'
+            },
+            'strategic-framework': {
+                title: 'Strategic Framework Development',
+                description: 'Create comprehensive strategic frameworks that guide decision-making and organizational development.'
+            },
+            'implementation-roadmap': {
+                title: 'Implementation Roadmapping',
+                description: 'Develop detailed roadmaps for implementing strategic initiatives with clear milestones and deliverables.'
+            },
+            'success-metrics': {
+                title: 'Success Metrics Definition',
+                description: 'Define key performance indicators and success metrics to measure progress toward strategic goals.'
+            },
+            'follow-up-planning': {
+                title: 'Follow-up Session Planning',
+                description: 'Plan and schedule follow-up sessions to ensure continued progress and accountability.'
+            },
+            'orientation': {
+                title: 'Orientation',
+                description: 'Comprehensive orientation session to introduce all stakeholders to the project goals, timeline, and expectations. This includes briefing key personnel on their roles and responsibilities.'
+            },
+            'biweekly-meetings': {
+                title: 'Bi-weekly Project Meetings',
+                description: 'Regular bi-weekly meetings to track progress, address challenges, and ensure project momentum. These structured sessions keep all stakeholders aligned and informed throughout the process.'
+            },
+            'kickoff-meeting': {
+                title: 'Project Kickoff Meeting',
+                description: 'Formal project launch meeting to establish clear objectives, timelines, and success metrics. This session sets the foundation for effective project execution and stakeholder engagement.'
+            },
+            'project-announcement': {
+                title: 'Project Announcement',
+                description: 'Strategic communication to announce the project to the broader organization and community. Includes messaging strategy, communication materials, and stakeholder engagement planning.'
+            },
+            'interviews': {
+                title: 'Interviews',
+                description: 'Structured interviews with key stakeholders to gather insights, understand current challenges, and identify opportunities for improvement. These inform strategic recommendations and implementation planning.'
+            },
+            'current-state-report': {
+                title: 'Current State Report',
+                description: 'Comprehensive analysis and documentation of the organization\'s current state, including processes, systems, and challenges. This baseline assessment guides strategic planning and improvement initiatives.'
+            },
+            'midyear-review': {
+                title: 'Mid-year Review',
+                description: 'Mid-point assessment to evaluate progress, adjust strategies, and ensure project objectives remain on track. Includes performance analysis and recommendations for the second half of the project.'
+            },
+            'online-feedback': {
+                title: 'Online Feedback',
+                description: 'Digital feedback collection system to gather input from stakeholders throughout the project. Includes survey design, data collection, and analysis to inform decision-making.'
+            },
+            'public-meeting': {
+                title: 'Public Meeting and Teambuilding for Elected Officials',
+                description: 'Facilitated public meeting and team building session specifically designed for elected officials. Focuses on collaboration, communication, and alignment on strategic priorities.'
+            },
+            // Teambuilding and Retreat Services
+            'team-trust-building': {
+                title: 'Trust Building Exercises',
+                description: 'Interactive activities designed to build trust and psychological safety within teams through experiential learning and shared challenges.'
+            },
+            'team-communication': {
+                title: 'Communication Workshops',
+                description: 'Hands-on workshops to improve team communication, active listening, and constructive feedback skills for enhanced collaboration.'
+            },
+            'team-conflict-resolution': {
+                title: 'Conflict Resolution Training',
+                description: 'Learn effective strategies to address and resolve conflicts constructively, turning challenges into opportunities for growth.'
+            },
+            'team-values-alignment': {
+                title: 'Team Values Alignment',
+                description: 'Collaborative sessions to identify, articulate, and align on shared team values that guide behavior and decision-making.'
+            },
+            'team-goal-setting': {
+                title: 'Collaborative Goal Setting',
+                description: 'Facilitated goal-setting sessions that ensure team buy-in and commitment to shared objectives and success metrics.'
+            },
+            'team-problem-solving': {
+                title: 'Problem Solving Activities',
+                description: 'Engaging challenges and simulations that develop creative problem-solving skills and collaborative thinking.'
+            },
+            'team-leadership': {
+                title: 'Leadership Development',
+                description: 'Activities and discussions that build leadership capacity across all team members, fostering distributed leadership.'
+            },
+            'team-innovation': {
+                title: 'Innovation Brainstorming',
+                description: 'Structured creativity sessions using design thinking and innovation frameworks to generate breakthrough ideas.'
+            },
+            'team-retreat-planning': {
+                title: 'Retreat Planning and Design',
+                description: 'Comprehensive planning and facilitation of multi-day retreats tailored to your team\'s specific goals and culture.'
+            },
+            'team-outdoor-activities': {
+                title: 'Outdoor Team Activities',
+                description: 'Adventure-based team challenges and outdoor experiences that build camaraderie and resilience.'
+            },
+            'team-celebration': {
+                title: 'Success Celebration Planning',
+                description: 'Design and facilitate meaningful celebrations that recognize achievements and reinforce positive team culture.'
+            },
+            'team-wellness': {
+                title: 'Wellness and Mindfulness',
+                description: 'Mindfulness practices and wellness activities that promote work-life balance and stress management.'
+            },
+            'team-culture': {
+                title: 'Culture Building Sessions',
+                description: 'Intentional culture development activities that shape and strengthen your desired team culture and norms.'
+            },
+            'team-feedback': {
+                title: '360 Feedback Facilitation',
+                description: 'Structured 360-degree feedback processes that provide valuable insights while maintaining psychological safety.'
+            },
+            'team-action-plans': {
+                title: 'Team Action Planning',
+                description: 'Collaborative development of actionable plans with clear ownership, timelines, and accountability measures.'
+            },
+            // Instructor-Led Training Services
+            'train-leadership': {
+                title: 'Leadership Fundamentals',
+                description: 'Core leadership principles and practices including vision-setting, motivation, decision-making, and leading through change.'
+            },
+            'train-management': {
+                title: 'Management Essentials',
+                description: 'Fundamental management skills including planning, organizing, delegating, and performance monitoring for new and aspiring managers.'
+            },
+            'train-communication': {
+                title: 'Effective Communication',
+                description: 'Professional communication techniques for written, verbal, and non-verbal communication in workplace settings.'
+            },
+            'train-presentation': {
+                title: 'Presentation Skills',
+                description: 'Develop confidence and competence in delivering engaging, persuasive presentations to diverse audiences.'
+            },
+            'train-facilitation': {
+                title: 'Facilitation Techniques',
+                description: 'Learn to design and facilitate productive meetings, workshops, and group processes that drive results.'
+            },
+            'train-project-mgmt': {
+                title: 'Project Management',
+                description: 'Project planning, execution, and monitoring techniques using industry-standard frameworks and best practices.'
+            },
+            'train-change-mgmt': {
+                title: 'Change Management',
+                description: 'Strategies for leading organizational change, overcoming resistance, and building change capacity.'
+            },
+            'train-performance': {
+                title: 'Performance Management',
+                description: 'Skills for setting expectations, providing feedback, conducting reviews, and developing employee performance.'
+            },
+            'train-coaching': {
+                title: 'Coaching and Mentoring',
+                description: 'Coaching techniques and mentoring strategies to develop talent and build leadership capacity in others.'
+            },
+            'train-dei': {
+                title: 'Diversity, Equity, and Inclusion',
+                description: 'Build awareness, knowledge, and skills to create inclusive workplaces where all employees can thrive.'
+            },
+            'train-customer-service': {
+                title: 'Customer Service Excellence',
+                description: 'Strategies and skills for delivering exceptional customer experiences and building customer loyalty.'
+            },
+            'train-problem-solving': {
+                title: 'Problem Solving and Decision Making',
+                description: 'Structured approaches to analyzing problems, generating solutions, and making sound decisions under uncertainty.'
+            },
+            'train-time-mgmt': {
+                title: 'Time Management',
+                description: 'Practical tools and techniques for prioritizing tasks, managing distractions, and maximizing productivity.'
+            },
+            'train-emotional-intelligence': {
+                title: 'Emotional Intelligence',
+                description: 'Develop self-awareness, self-regulation, empathy, and social skills for more effective workplace relationships.'
+            },
+            'train-custom': {
+                title: 'Custom Topic Training',
+                description: 'Tailored training programs designed specifically for your organization\'s unique needs and challenges.'
+            }
+        };
+
+        const selectedAgendaItems = {};
+        const selectedTeambuildingItems = {};
+        const selectedTrainingItems = {};
+
+        function showServiceOptions() {
+            const serviceType = document.getElementById('serviceType').value;
+            const facilitationSection = document.getElementById('facilitation');
+            const strategicPlanningOptions = document.getElementById('strategic-planning-options');
+            const teambuildingRetreatOptions = document.getElementById('teambuilding-retreat-options');
+            const instructorTrainingOptions = document.getElementById('instructor-training-options');
+            const ctaSection = document.getElementById('cta-section');
+            
+            // Hide all service options first
+            strategicPlanningOptions.style.display = 'none';
+            teambuildingRetreatOptions.style.display = 'none';
+            instructorTrainingOptions.style.display = 'none';
+            
+            // Show or hide the facilitation section based on selection
+            if (serviceType) {
+                facilitationSection.style.display = 'block';
+                
+                // Show selected service options
+                if (serviceType === 'strategic-planning') {
+                    strategicPlanningOptions.style.display = 'block';
+                } else if (serviceType === 'teambuilding-retreat') {
+                    teambuildingRetreatOptions.style.display = 'block';
+                } else if (serviceType === 'instructor-training') {
+                    instructorTrainingOptions.style.display = 'block';
+                }
+                
+                // Show CTA section
+                ctaSection.style.display = 'block';
+                
+                // Auto-scroll to the service window
+                setTimeout(() => {
+                    facilitationSection.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                }, 100);
+            } else {
+                // Hide facilitation section if no type selected
+                facilitationSection.style.display = 'none';
+                ctaSection.style.display = 'none';
+            }
+        }
+
+        function toggleAgendaItem(serviceId) {
+            const checkbox = document.getElementById(serviceId);
+            
+            // Determine which type of service this is
+            let agendaContainer, agendaItemsContainer, selectedItems;
+            
+            if (serviceId.startsWith('team-')) {
+                agendaContainer = document.getElementById('draft-agenda-teambuilding');
+                agendaItemsContainer = document.getElementById('agenda-items-teambuilding');
+                selectedItems = selectedTeambuildingItems;
+            } else if (serviceId.startsWith('train-')) {
+                agendaContainer = document.getElementById('draft-agenda-training');
+                agendaItemsContainer = document.getElementById('agenda-items-training');
+                selectedItems = selectedTrainingItems;
+            } else {
+                agendaContainer = document.getElementById('draft-agenda');
+                agendaItemsContainer = document.getElementById('agenda-items');
+                selectedItems = selectedAgendaItems;
+            }
+            
+            if (checkbox.checked) {
+                // Add to appropriate agenda
+                selectedItems[serviceId] = serviceDescriptions[serviceId];
+            } else {
+                // Remove from appropriate agenda
+                delete selectedItems[serviceId];
+            }
+            
+            // Update appropriate agenda display
+            updateAgendaDisplay(agendaContainer, agendaItemsContainer, selectedItems);
+        }
+
+        function updateAgendaDisplay(agendaContainer, agendaItemsContainer, selectedItems) {
+            const itemCount = Object.keys(selectedItems).length;
+            
+            if (itemCount === 0) {
+                agendaContainer.style.display = 'none';
+                agendaItemsContainer.innerHTML = '<p class="placeholder-text">Select services above to build your agenda</p>';
+            } else {
+                agendaContainer.style.display = 'block';
+                let html = '';
+                for (const [id, service] of Object.entries(selectedItems)) {
+                    html += `
+                        <div class="agenda-item">
+                            <h5>${service.title}</h5>
+                            <p>${service.description}</p>
+                        </div>
+                    `;
+                }
+                agendaItemsContainer.innerHTML = html;
+            }
+        }
+
+        function openBookingModal() {
+            document.getElementById('bookingModal').style.display = 'flex';
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').style.display = 'none';
+        }
+
+        function submitBooking() {
+            const selectedDate = document.querySelector('input[name="bookingDate"]:checked');
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const phone = document.getElementById('contactPhone').value;
+            
+            if (!selectedDate) {
+                alert('Please select a date.');
+                return;
+            }
+            
+            if (!name || !email) {
+                alert('Please fill in your name and email.');
+                return;
+            }
+            
+            // Combine all selected items from all three types
+            const allSelectedItems = {
+                ...selectedAgendaItems,
+                ...selectedTeambuildingItems,
+                ...selectedTrainingItems
+            };
+            
+            // Build agenda summary
+            let agendaSummary = '';
+            for (const [id, service] of Object.entries(allSelectedItems)) {
+                agendaSummary += service.title + ', ';
+            }
+            agendaSummary = agendaSummary.slice(0, -2); // Remove trailing comma
+            
+            // Determine service type
+            const serviceType = document.getElementById('serviceType').value;
+            let serviceTypeName = '';
+            if (serviceType === 'strategic-planning') {
+                serviceTypeName = 'Strategic Planning';
+            } else if (serviceType === 'teambuilding-retreat') {
+                serviceTypeName = 'Teambuilding or Retreat';
+            } else if (serviceType === 'instructor-training') {
+                serviceTypeName = 'Instructor-Led Training';
+            }
+            
+            // Create mailto link
+            const subject = encodeURIComponent('Session Date Hold Request');
+            const body = encodeURIComponent(
+                `Name: ${name}\n` +
+                `Email: ${email}\n` +
+                `Phone: ${phone}\n` +
+                `Facilitation Type: ${serviceTypeName}\n` +
+                `Preferred Date: ${selectedDate.value}\n\n` +
+                `Selected Services:\n${agendaSummary}\n\n` +
+                `Draft Agenda:\n` +
+                Object.values(allSelectedItems).map(s => `- ${s.title}: ${s.description}`).join('\n')
+            );
+            
+            window.location.href = `mailto:your-email@transformlocalgov.com?subject=${subject}&body=${body}`;
+            
+            closeBookingModal();
+            alert('Your booking request has been prepared. Please send the email to complete your date hold request.');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('bookingModal');
+            if (event.target === modal) {
+                closeBookingModal();
+            }
+        }
+
+        // Header scroll behavior for facilitation page
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            const heroSection = document.querySelector('.facilitation-hero');
+            
+            if (heroSection) {
+                const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+                
+                if (window.scrollY > heroBottom) {
+                    // Scrolled past hero - change to white header with black text
+                    navbar.style.backgroundColor = '#ffffff';
+                    navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+                    
+                    // Change text colors to black
+                    const navLinks = document.querySelectorAll('.navbar .nav-link');
+                    const logoText = document.querySelector('.navbar .logo-text');
+                    const hamburgerBars = document.querySelectorAll('.navbar .hamburger .bar');
+                    
+                    navLinks.forEach(link => {
+                        link.style.color = '#333333';
+                    });
+                    if (logoText) logoText.style.color = '#333333';
+                    hamburgerBars.forEach(bar => {
+                        bar.style.backgroundColor = '#333333';
+                    });
+                } else {
+                    // In hero section - transparent background with white text
+                    navbar.style.backgroundColor = 'transparent';
+                    navbar.style.boxShadow = 'none';
+                    
+                    // Set text colors to white
+                    const navLinks = document.querySelectorAll('.navbar .nav-link');
+                    const logoText = document.querySelector('.navbar .logo-text');
+                    const hamburgerBars = document.querySelectorAll('.navbar .hamburger .bar');
+                    
+                    navLinks.forEach(link => {
+                        link.style.color = 'white';
+                    });
+                    if (logoText) logoText.style.color = 'white';
+                    hamburgerBars.forEach(bar => {
+                        bar.style.backgroundColor = 'white';
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
+

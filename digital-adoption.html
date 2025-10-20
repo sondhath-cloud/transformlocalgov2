@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Adoption - TransformLocalGov</title>
+    <meta name="description"
+        content="Digital adoption and organizational transformation services. Reboot your organization's operating system for lasting change.">
+    <link rel="icon" type="image/png" href="assets/images/TLGLogo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+</head>
+
+<body class="digital-adoption">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px;">
+                    <img src="assets/images/TLGLogo.png" alt="TransformLocalGov Logo" style="height: 40px; width: auto;">
+                    <span class="logo-text">TransformLocalGov</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="facilitation.html" class="nav-link">Facilitation</a>
+                </li>
+                <li class="nav-item">
+                    <a href="digital-adoption.html" class="nav-link active">Digital Adopt</a>
+                </li>
+                <li class="nav-item">
+                    <a href="custom-tools.html" class="nav-link">Web/Apps</a>
+                </li>
+                <li class="nav-item">
+                    <a href="order.html" class="nav-link">Order</a>
+                </li>
+                <li class="nav-item">
+                    <a href="resources.html" class="nav-link">Resources</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Two-Column Hero Section -->
+    <section class="two-column-hero">
+        <div class="two-column-hero-content">
+            <div class="hero-left-column">
+                <div class="hero-text">
+                    <h1 class="hero-title">Reboot Your Organization's "Operating System"</h1>
+                    <p>Are you about to implement software and hoping for organizational transformation? That means rebooting your organization while you're at it. We help make change simple and sustainable.</p>
+                </div>
+            </div>
+            <div class="hero-right-column">
+                <div class="video-container-full" onclick="openVideoModal()">
+                    <img src="assets/images/video_thumbnail.jpg" alt="Video Thumbnail" class="video-thumbnail-full">
+                    <div class="video-overlay-full">
+                        <div class="play-button-full">
+                            Play Video
+                        </div>
+                        <div class="video-notice-full">
+                            Contains Sound
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Single Column Section for Dropdown -->
+    <section class="intro-section" style="background: #ffffff; padding: 1rem 2rem 2rem;">
+        <div class="intro-content" style="max-width: var(--max-width); margin: 0 auto;">
+            <!-- Implementation Status Selection -->
+            <div class="service-type-selection">
+                <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 1rem;">Where are you in your digital transformation journey?</h2>
+                <div class="service-type-dropdown">
+                    <select id="implementationStatus" onchange="showImplementationServices()">
+                        <option value="">Select your current status...</option>
+                        <option value="not-selected">We have not selected a system yet</option>
+                        <option value="implementing">We are preparing to, or have begun, implementation</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-modal-content">
+            <span class="close-modal" onclick="closeVideoModal()">&times;</span>
+            <video id="modalVideo" controls poster="assets/images/video_thumbnail.jpg">
+                <source src="assets/images/we-love-change.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <!-- Operating System Definition Section -->
+    <section class="section os-definition">
+        <div class="section-content">
+            <h2 class="section-title">What is an Organizational "Operating System"?</h2>
+            <div class="definition-content">
+                <div class="definition-text">
+                    <p>Just like a computer's operating system manages hardware and software to run programs efficiently, your organization's "operating system" is the underlying framework that determines how your people, processes, and technology work together to serve your community.</p>
+                </div>
+
+                <div class="os-comparison" id="osComparison">
+                    <div class="compare">
+                        <section class="before">
+                            <div class="comparison-content">
+                                <h3>Computer Operating System</h3>
+                                <div class="comparison-item">
+                                    <h4>Memory Management</h4>
+                                    <p>Allocates RAM efficiently to run multiple programs simultaneously</p>
+                                </div>
+                                <div class="comparison-item">
+                                    <h4>Process Control</h4>
+                                    <p>Manages CPU resources and task scheduling for optimal performance</p>
+                                </div>
+                                <div class="comparison-item">
+                                    <h4>Hardware Interface</h4>
+                                    <p>Provides drivers and APIs for hardware components to communicate</p>
+                                </div>
+                                <div class="comparison-item">
+                                    <h4>File System</h4>
+                                    <p>Organizes and manages data storage and retrieval</p>
+                                </div>
+                                <div class="comparison-item">
+                                    <h4>Security Layer</h4>
+                                    <p>Protects against viruses, malware, and unauthorized access</p>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="after">
+                            <div class="comparison-content">
+                                <h3>Organizational Operating System</h3>
+                                <div class="comparison-item">
+                                    <h4>People Management</h4>
+                                    <p>Allocates human resources efficiently across departments and projects</p>
+                                </div>
+                                <div class="comparison-item">
+                                    <h4>Workflow Control</h4>
+                                    <p>Manages processes and procedures for optimal service delivery</p>
+                                </div>
+                                <div class="comparison-item">
+                                    <h4>Technology Interface</h4>
+                                    <p>Integrates software systems and tools for seamless operations</p>
+                                </div>
+                                <div class="comparison-item">
+                                    <h4>Knowledge System</h4>
+                                    <p>Organizes and manages information, policies, and procedures</p>
+                                </div>
+                                <div class="comparison-item">
+                                    <h4>Culture Layer</h4>
+                                    <p>Protects against burnout, turnover, and disengagement</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <input type="range" id="osRange" min="0" max="100" value="35" class="slider">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Button Section -->
+    <section class="quiz-section">
+        <div class="section-content">
+            <div class="quiz-container">
+                <a href="https://transformlocalgov.com/transformation-quiz" target="_blank" class="quiz-button">When is a reboot needed? Take Our Quiz</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consulting Section -->
+    <section id="consulting" class="website-request modern-white" style="display: none;">
+        <div class="container">
+            <div class="request-content">
+
+
+                <!-- Not Selected System Options -->
+                <div id="not-selected-options" class="service-options" style="display: none;">
+                    <div class="service-tiers-section">
+                        <div class="service-tiers">
+                            <div class="service-tier basic-tier">
+                                
+                <div class="change-management-accordion">
+                    <h3 style="text-align: center; margin: 2rem 0; font-size: 1.8rem;">Change Management Tasks During System Selection</h3>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header">Stakeholder Engagement and Communication</button>
+                        <div class="accordion-content">
+                            <p><strong>Identify and map stakeholders</strong> across all levels and departments who will be affected by the new system. Document their interests, influence levels, and potential concerns to create a stakeholder engagement matrix.</p>
+                            
+                            <p><strong>Form a change network</strong> by recruiting change champions and advocates from different departments and levels. These individuals will help communicate benefits, gather feedback, and support their peers through the transition.</p>
+                            
+                            <p><strong>Develop a communication strategy</strong> that outlines how you'll keep stakeholders informed throughout the selection and implementation process. Include communication channels, frequency, key messages, and target audiences for each phase.</p>
+                            
+                            <p><strong>Conduct initial stakeholder meetings</strong> to explain why the system change is happening, the selection process, and how people can provide input. This builds trust and reduces uncertainty early.</p>
+                            
+                            <p><strong>Create feedback mechanisms</strong> such as surveys, focus groups, or suggestion boxes so employees can voice concerns, ask questions, and contribute to requirements gathering during selection.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header">Impact Assessment and Readiness</button>
+                        <div class="accordion-content">
+                            <p><strong>Perform an organizational readiness assessment</strong> to understand your organization's capacity for change. Evaluate past change initiatives, current change fatigue levels, and cultural factors that might affect adoption.</p>
+                            
+                            <p><strong>Conduct impact analysis</strong> to identify how different roles, processes, and departments will be affected by the new system. Map out what will change in daily work for various user groups.</p>
+                            
+                            <p><strong>Assess current state processes</strong> and document existing workflows, pain points, and workarounds. This creates a baseline for comparison and helps identify improvement opportunities.</p>
+                            
+                            <p><strong>Evaluate change capacity</strong> by reviewing other ongoing initiatives and organizational bandwidth. Determine if timing is appropriate or if adjustments are needed.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header">Organizational Alignment</button>
+                        <div class="accordion-content">
+                            <p><strong>Develop the change vision and business case</strong> that clearly articulates why the change is necessary, what benefits it will bring, and how it aligns with organizational strategy. Make this compelling and relatable to different audiences.</p>
+                            
+                            <p><strong>Establish governance structures</strong> including a steering committee, project board, or change advisory board to oversee both technical and people aspects of the initiative.</p>
+                            
+                            <p><strong>Align leadership team</strong> by ensuring executives and senior leaders understand their role in sponsoring the change. Conduct sponsor assessments and provide coaching if needed.</p>
+                            
+                            <p><strong>Define success metrics</strong> for both the technical implementation and adoption. Include user adoption rates, proficiency levels, process improvements, and business outcome measures.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header">Planning and Strategy Development</button>
+                        <div class="accordion-content">
+                            <p><strong>Create a change management plan</strong> that outlines your approach, activities, timelines, resources, and responsibilities for managing the people side of change throughout the project lifecycle.</p>
+                            
+                            <p><strong>Develop a resistance management strategy</strong> that anticipates potential sources of resistance and outlines proactive and reactive approaches to address concerns.</p>
+                            
+                            <p><strong>Plan the training approach</strong> at a high level, including training needs analysis methodology, delivery options, timing considerations, and resource requirements.</p>
+                            
+                            <p><strong>Design the organizational change management structure</strong> by determining team roles, responsibilities, and integration points with the project team.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header">Requirements and Design Input</button>
+                        <div class="accordion-content">
+                            <p><strong>Facilitate requirements workshops</strong> that include change management perspectives on user experience, adoption barriers, and process design. Ensure the human element influences system selection criteria.</p>
+                            
+                            <p><strong>Include change criteria in vendor evaluation</strong> such as system usability, learning curve, change management support from vendors, and implementation approach flexibility.</p>
+                            
+                            <p><strong>Advocate for user-centered design</strong> by ensuring end-user perspectives are represented in system demonstrations, evaluations, and decision-making processes.</p>
+                            
+                            <p><strong>Document change implications</strong> of different system options to help decision-makers understand people and process impacts of each choice.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header">Early Engagement Activities</button>
+                        <div class="accordion-content">
+                            <p><strong>Begin building awareness</strong> through town halls, newsletters, intranet updates, or team meetings about the upcoming change and the selection process.</p>
+                            
+                            <p><strong>Start cultural preparation</strong> by addressing any cultural barriers to change, promoting a growth mindset, and celebrating examples of successful adaptation.</p>
+                            
+                            <p><strong>Identify early adopters and influencers</strong> who can be engaged more deeply in the selection process and groomed to support broader rollout later.</p>
+                            
+                            <p><strong>Gather baseline data</strong> on current satisfaction, pain points, system usage patterns, and attitudes toward change that can be measured again post-implementation.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header">Risk Management</button>
+                        <div class="accordion-content">
+                            <p><strong>Develop a change risk register</strong> identifying people-related risks such as key person dependencies, potential resistance hotspots, competing priorities, or cultural barriers.</p>
+                            
+                            <p><strong>Create mitigation plans</strong> for identified risks with specific actions, owners, and triggers for implementation.</p>
+                            
+                            <p><strong>Plan for business continuity</strong> during transition periods, including how work will continue if adoption is slower than expected.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header">Resource Planning</button>
+                        <div class="accordion-content">
+                            <p><strong>Determine change management resource needs</strong> including team members, budget, tools, and external support required throughout the initiative.</p>
+                            
+                            <p><strong>Build the change team</strong> by recruiting or assigning change managers, communication specialists, training developers, and other necessary roles.</p>
+                            
+                            <p><strong>Secure budget allocation</strong> for change management activities including communications, training, change champion programs, and celebration events.</p>
+                            
+                            <p style="margin-top: 1.5rem; font-style: italic;">Starting these activities during system selection ensures change management is embedded from the beginning rather than bolted on later, significantly improving the likelihood of successful adoption and realization of benefits.</p>
+                        </div>
+                    </div>
+                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Implementation Options -->
+                <div id="implementing-options" class="service-options" style="display: none;">
+                    <div class="service-tiers-section">
+                        <div class="service-tiers">
+                            <div class="service-tier basic-tier">
+                                
+                <div class="change-management-accordion">
+                    <h3 style="text-align: center; margin: 2rem 0; font-size: 1.8rem;">Helpful Change Management Support</h3>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header">Stakeholder Engagement and Communication</button>
+                        <div class="accordion-content">
+                            <p><strong>Announce the system selection</strong> through multiple channels to inform all stakeholders which system was chosen and why. Share the decision rationale, expected benefits, and high-level timeline to build understanding and buy-in.</p>
+                            
+                            <p><strong>Refine stakeholder analysis</strong> now that the specific system is known. Update your stakeholder map to reflect who will be most impacted by this particular solution and adjust engagement strategies accordingly.</p>
+                            
+                            <p><strong>Expand the change champion network</strong> by recruiting additional advocates who are enthusiastic about the selected system. Provide them with detailed information so they can speak knowledgeably with their peers.</p>
+                            
+                            <p><strong>Launch regular communication cadence</strong> including newsletters, intranet updates, team briefings, and town halls to maintain momentum and keep people informed as planning progresses.</p>
+                            
+                            <p><strong>Create communication materials</strong> such as FAQs, fact sheets, and presentation templates that explain the new system, its capabilities, and what it means for different user groups.</p>
+                            
+                            <p><strong>Establish two-way dialogue channels</strong> through office hours, Q and A sessions, online forums, or feedback surveys where employees can ask questions and express concerns in real time.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header">Impact Assessment and Readiness</button>
+                        <div class="accordion-content">
+                            <p><strong>Conduct detailed impact analysis</strong> for the specific system selected. Map exactly how workflows, responsibilities, interfaces, integrations, and daily activities will change for each role and department.</p>
+                            
+                            <p><strong>Perform gap analysis</strong> comparing current state capabilities and processes with the future state enabled by the new system. Identify specific changes required in processes, skills, and behaviors.</p>
+                            
+                            <p><strong>Assess organizational change readiness</strong> more precisely now that people know what system is coming. Measure current attitudes, concerns, and readiness levels across different groups.</p>
+                            
+                            <p><strong>Identify high-impact groups</strong> who will experience the most significant changes and require additional support, training, or change interventions.</p>
+                            
+                            <p><strong>Document process changes</strong> by working with process owners to redesign workflows that will be affected by the new system. Create future state process maps and identify optimization opportunities.</p>
+                            
+                            <p><strong>Evaluate cultural fit</strong> between the selected system and organizational culture. Identify where cultural shifts or adaptations will be necessary for successful adoption.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header">Leadership Alignment and Sponsorship</button>
+                        <div class="accordion-content">
+                            <p><strong>Conduct executive sponsor coaching</strong> to prepare leaders for their visible role in championing the change. Provide talking points, presentation materials, and guidance on effectively communicating support.</p>
+                            
+                            <p><strong>Create a sponsor roadmap</strong> outlining specific activities leaders need to perform at each project phase, from kickoff through go-live and stabilization.</p>
+                            
+                            <p><strong>Align middle management</strong> who will be critical to supporting their teams through the transition. Brief managers on their role, expected changes, and how to address team concerns.</p>
+                            
+                            <p><strong>Develop leadership communication plan</strong> detailing when and how leaders should communicate about the change, including kickoff messages, milestone updates, and recognition of progress.</p>
+                            
+                            <p><strong>Address leadership concerns privately</strong> through one-on-one meetings to resolve any hesitations or misalignments before they become visible to the broader organization.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header">Detailed Planning and Strategy</button>
+                        <div class="accordion-content">
+                            <p><strong>Finalize the comprehensive change management plan</strong> with specific activities, timelines, resource assignments, and dependencies aligned to the implementation schedule.</p>
+                            
+                            <p><strong>Develop the training strategy and plan</strong> including needs analysis for the specific system, curriculum design approach, delivery methods, trainer requirements, and scheduling considerations.</p>
+                            
+                            <p><strong>Create the communications plan</strong> with detailed message calendars, content themes, delivery channels, and responsibility assignments for each phase of implementation.</p>
+                            
+                            <p><strong>Design the reinforcement and sustainability plan</strong> outlining how you will support adoption after go-live through coaching, performance support, ongoing communications, and continuous improvement processes.</p>
+                            
+                            <p><strong>Build the resistance management approach</strong> with specific strategies for different sources and levels of resistance, including escalation paths and intervention techniques.</p>
+                            
+                            <p><strong>Develop the adoption measurement framework</strong> defining key performance indicators, data collection methods, reporting cadence, and targets for user adoption and proficiency.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header">Training Preparation</button>
+                        <div class="accordion-content">
+                            <p><strong>Conduct training needs analysis</strong> for the specific system to identify what skills and knowledge different user groups need to develop. Consider varying proficiency levels and learning preferences.</p>
+                            
+                            <p><strong>Design training curriculum</strong> including course outlines, learning objectives, delivery formats, duration, and sequencing for different audiences from basic users to power users to administrators.</p>
+                            
+                            <p><strong>Identify training resources</strong> needed such as trainers, training environments, materials development tools, learning management systems, and scheduling resources.</p>
+                            
+                            <p><strong>Develop train-the-trainer program</strong> if using an internal trainer model. Create materials and schedule sessions to prepare trainers to deliver effective instruction.</p>
+                            
+                            <p><strong>Plan training logistics</strong> including scheduling approach, classroom or lab requirements, equipment needs, participant selection process, and attendance tracking methods.</p>
+                            
+                            <p><strong>Begin developing training materials</strong> such as instructor guides, participant workbooks, quick reference guides, and e-learning modules based on system functionality and business processes.</p>
+                            
+                            <p><strong>Create a training communication plan</strong> to inform people when training will be available, how to register, what to expect, and why participation is important.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header">Communication Development</button>
+                        <div class="accordion-content">
+                            <p><strong>Develop key messages and talking points</strong> for different audiences explaining what the system does, why it was chosen, how it will benefit them, and what changes to expect.</p>
+                            
+                            <p><strong>Create a change story or narrative</strong> that connects the new system to organizational vision and strategy in a compelling, memorable way.</p>
+                            
+                            <p><strong>Design visual identity for the change initiative</strong> including project name, logo, tagline, or theme that makes the initiative recognizable and builds positive association.</p>
+                            
+                            <p><strong>Produce awareness campaign materials</strong> such as posters, screensavers, video teasers, or countdown communications to build anticipation and maintain visibility.</p>
+                            
+                            <p><strong>Develop stakeholder-specific content</strong> tailored to different groups such as executives, managers, end users, customers, and external partners explaining relevant impacts and expectations.</p>
+                            
+                            <p><strong>Plan launch events or kickoff activities</strong> to formally introduce the implementation and generate enthusiasm. Consider town halls, departmental meetings, or celebration events.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header">Organizational Preparation</button>
+                        <div class="accordion-content">
+                            <p><strong>Redesign impacted business processes</strong> to optimize workflows for the new system rather than simply replicating old processes. Document these changes and secure approvals.</p>
+                            
+                            <p><strong>Update policies and procedures</strong> that will be affected by the new system. Draft new documentation that reflects future state operations.</p>
+                            
+                            <p><strong>Revise roles and responsibilities</strong> where job duties will change significantly. Update position descriptions, performance expectations, and accountability structures as needed.</p>
+                            
+                            <p><strong>Plan organizational structure changes</strong> if the new system enables or requires different team configurations, reporting relationships, or resource allocations.</p>
+                            
+                            <p><strong>Prepare physical workspace modifications</strong> if the new system requires different equipment, layouts, or collaboration spaces.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header">Change Network Development</button>
+                        <div class="accordion-content">
+                            <p><strong>Recruit and onboard change champions</strong> from all affected areas. Select individuals who are respected, enthusiastic, and have strong networks within their departments.</p>
+                            
+                            <p><strong>Train change champions</strong> on their role, the new system, change management principles, and how to support their colleagues. Provide them with toolkits and resources.</p>
+                            
+                            <p><strong>Establish change champion network structure</strong> including regular meetings, communication channels, reporting mechanisms, and recognition programs to keep them engaged and informed.</p>
+                            
+                            <p><strong>Create change champion toolkit</strong> with talking points, FAQs, demonstration access, feedback collection tools, and other resources they need to be effective advocates.</p>
+                            
+                            <p><strong>Define escalation processes</strong> so change champions know how to route questions they cannot answer or concerns that require leadership attention.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header">Risk Management and Issue Resolution</button>
+                        <div class="accordion-content">
+                            <p><strong>Update the change risk register</strong> with implementation-specific risks now that the system is known. Add risks related to technical complexity, resource constraints, or adoption challenges.</p>
+                            
+                            <p><strong>Develop detailed risk mitigation plans</strong> with specific actions, owners, timelines, and success measures for each significant risk.</p>
+                            
+                            <p><strong>Establish issue management process</strong> for tracking and resolving change-related concerns, resistance, or barriers that arise during implementation.</p>
+                            
+                            <p><strong>Create contingency plans</strong> for potential scenarios such as delayed timelines, resource shortages, or unexpected resistance that could derail adoption.</p>
+                            
+                            <p><strong>Plan for quick wins</strong> by identifying early opportunities to demonstrate value and build confidence in the new system.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header">Readiness Activities</button>
+                        <div class="accordion-content">
+                            <p><strong>Conduct readiness workshops</strong> with impacted teams to help them understand what is changing, prepare for the transition, and voice any concerns or questions.</p>
+                            
+                            <p><strong>Create readiness assessments</strong> or checklists that teams and individuals can use to evaluate their preparedness for the upcoming changes.</p>
+                            
+                            <p><strong>Develop change readiness reporting</strong> to track preparedness across the organization and identify areas needing additional support before go-live.</p>
+                            
+                            <p><strong>Begin building excitement</strong> through sneak peeks, demo sessions, or prototype walkthroughs that give people positive exposure to the new system.</p>
+                            
+                            <p><strong>Address concerns proactively</strong> by creating forums where people can discuss worries, ask difficult questions, and receive honest, thoughtful responses.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header">Integration and Coordination</button>
+                        <div class="accordion-content">
+                            <p><strong>Integrate change management into project governance</strong> by securing representation on steering committees, project boards, and decision-making forums to ensure people considerations influence technical decisions.</p>
+                            
+                            <p><strong>Align change activities with project milestones</strong> to ensure communication, training, and engagement activities are synchronized with technical implementation phases.</p>
+                            
+                            <p><strong>Coordinate with technical teams</strong> on testing strategies, data migration communication, cutover planning, and support model design to ensure seamless user experience.</p>
+                            
+                            <p><strong>Establish integration points</strong> with other initiatives or changes happening concurrently to minimize change fatigue and identify synergies or conflicts.</p>
+                            
+                            <p><strong>Define success criteria</strong> jointly with project and business leaders that include both technical delivery and adoption metrics.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header">Support Infrastructure Development</button>
+                        <div class="accordion-content">
+                            <p><strong>Design post-go-live support model</strong> including helpdesk preparation, super user programs, floor walking support, office hours, and escalation procedures.</p>
+                            
+                            <p><strong>Develop performance support tools</strong> such as job aids, quick reference guides, video tutorials, searchable knowledge bases, or in-application guidance.</p>
+                            
+                            <p><strong>Plan super user program</strong> by identifying candidates, defining their role, planning their training, and establishing how they will support colleagues.</p>
+                            
+                            <p><strong>Create support communication strategy</strong> so users know how to get help, where to find resources, and what to do when they encounter problems.</p>
+                            
+                            <p><strong>Establish feedback collection mechanisms</strong> for post-implementation to capture user experiences, identify issues quickly, and demonstrate responsiveness to concerns.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header">Measurement and Evaluation Preparation</button>
+                        <div class="accordion-content">
+                            <p><strong>Define baseline metrics</strong> for current performance, satisfaction, efficiency, and other measures that will be compared post-implementation to demonstrate impact.</p>
+                            
+                            <p><strong>Develop adoption dashboards or reporting</strong> to track user login rates, feature utilization, transaction volumes, and other indicators of system usage and proficiency.</p>
+                            
+                            <p><strong>Create evaluation surveys and tools</strong> to assess user satisfaction, confidence levels, perceived benefits, and remaining barriers at various intervals post-implementation.</p>
+                            
+                            <p><strong>Plan evaluation schedule</strong> defining when assessments will occur, who will conduct them, how results will be analyzed, and how findings will drive improvement actions.</p>
+                            
+                            <p><strong>Establish continuous improvement process</strong> for ongoing refinement based on user feedback, adoption data, and emerging needs.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header">Resource Mobilization</button>
+                        <div class="accordion-content">
+                            <p><strong>Finalize change management team</strong> by confirming all roles are filled, clarifying responsibilities, and ensuring team members have necessary skills and bandwidth.</p>
+                            
+                            <p><strong>Secure budget approvals</strong> for all planned change activities including training development, communication production, events, tools, and external support if needed.</p>
+                            
+                            <p><strong>Procure necessary tools and resources</strong> such as survey platforms, learning management systems, collaboration tools, or design services needed to execute the plan.</p>
+                            
+                            <p><strong>Establish vendor relationships</strong> if external support is needed for training development, communication design, coaching, or change management advisory services.</p>
+                            
+                            <p><strong>Confirm resource commitments</strong> from business units for subject matter experts, testers, trainers, change champions, and other roles that support implementation success.</p>
+                            
+                            <p style="margin-top: 1.5rem; font-style: italic;">Beginning these activities after system selection but before implementation starts ensures the organization is truly prepared for the change, people feel informed and engaged, and the foundation is laid for successful adoption when the system goes live.</p>
+                        </div>
+                    </div>
+                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Contact CTA -->
+                <div id="digital-cta-section" class="cta-section" style="display: none;">
+                    <h2 class="section-title">Ready to discuss the services your organization needs?</h2>
+                    <p class="section-subtitle">Let's discuss how digital adoption support can help your organization</p>
+                    <div class="cta-button-container">
+                        <button onclick="openDigitalBookingModal()" class="btn btn-primary btn-large">View Available Dates</button>
+                    </div>
+                </div>
+
+                <!-- Booking Modal -->
+                <div id="digitalBookingModal" class="booking-modal" style="display: none;">
+                    <div class="booking-modal-content">
+                        <span class="close-booking" onclick="closeDigitalBookingModal()">&times;</span>
+                        <h2>Available Dates</h2>
+                        <p>Select a preferred date for your consultation:</p>
+                        <div class="booking-dates">
+                            <div class="date-option">
+                                <input type="radio" id="digital-date1" name="digitalBookingDate" value="2025-11-15">
+                                <label for="digital-date1">November 15, 2025</label>
+                            </div>
+                            <div class="date-option">
+                                <input type="radio" id="digital-date2" name="digitalBookingDate" value="2025-11-22">
+                                <label for="digital-date2">November 22, 2025</label>
+                            </div>
+                            <div class="date-option">
+                                <input type="radio" id="digital-date3" name="digitalBookingDate" value="2025-12-06">
+                                <label for="digital-date3">December 6, 2025</label>
+                            </div>
+                            <div class="date-option">
+                                <input type="radio" id="digital-date4" name="digitalBookingDate" value="2025-12-13">
+                                <label for="digital-date4">December 13, 2025</label>
+                            </div>
+                            <div class="date-option">
+                                <input type="radio" id="digital-date5" name="digitalBookingDate" value="2026-01-10">
+                                <label for="digital-date5">January 10, 2026</label>
+                            </div>
+                            <div class="date-option">
+                                <input type="radio" id="digital-date6" name="digitalBookingDate" value="2026-01-17">
+                                <label for="digital-date6">January 17, 2026</label>
+                            </div>
+                        </div>
+                        <div class="booking-form">
+                            <input type="text" id="digitalContactName" class="glass-input" placeholder="Your Name" required>
+                            <input type="email" id="digitalContactEmail" class="glass-input" placeholder="Your Email" required>
+                            <input type="tel" id="digitalContactPhone" class="glass-input" placeholder="Your Phone">
+                        </div>
+                        <button onclick="submitDigitalBooking()" class="btn btn-primary btn-large">Hold Date</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2025 TransformLocalGov. All rights reserved.</p>
+                    <p>Email: info@transformlocalgov.com | Phone: 512-521-9888</p>
+                </div>
+                <div class="footer-middle">
+                    <a href="subscribe.html" class="footer-link">Payment</a>
+                    <a href="careers.html" class="footer-link">Careers</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/sondrahathaway/" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>
+                    <a href="https://github.com/sondhath-cloud" target="_blank" rel="noopener noreferrer" class="social-link">GitHub</a>
+                    <a href="https://www.youtube.com/@transformlocalgov" target="_blank" rel="noopener noreferrer" class="social-link">YouTube</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize the OS comparison slider on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeComparisonSlider();
+            // Animate the slider to show it's interactive
+            setTimeout(() => animateSliderWiggle(), 500);
+        });
+
+        // Service descriptions for digital adoption
+        const changeServiceDescriptions = {
+            // System Selection Services
+            'select-needs-assessment': {
+                title: 'Needs Assessment and Requirements Gathering',
+                description: 'Comprehensive analysis of your organization\'s needs, pain points, and requirements to inform system selection.'
+            },
+            'select-stakeholder-input': {
+                title: 'Stakeholder Input Sessions',
+                description: 'Facilitated sessions to gather input from all stakeholder groups to ensure the selected system meets diverse needs.'
+            },
+            'select-market-research': {
+                title: 'Market Research and Vendor Landscape Analysis',
+                description: 'Thorough research of available solutions and vendors in the market to identify best-fit options.'
+            },
+            'select-demo-coordination': {
+                title: 'Vendor Demo Coordination',
+                description: 'Organization and facilitation of vendor demonstrations with standardized scenarios for fair comparison.'
+            },
+            'select-evaluation-criteria': {
+                title: 'Evaluation Criteria Development',
+                description: 'Creation of weighted evaluation criteria aligned with organizational priorities and requirements.'
+            },
+            'select-cost-analysis': {
+                title: 'Total Cost of Ownership Analysis',
+                description: 'Comprehensive financial analysis including licensing, implementation, training, and ongoing costs.'
+            },
+            'select-rfp-development': {
+                title: 'RFP Development and Management',
+                description: 'Development of detailed Request for Proposal documents and management of the RFP process.'
+            },
+            'select-vendor-comparison': {
+                title: 'Vendor Comparison and Scoring',
+                description: 'Systematic comparison and scoring of vendor proposals against evaluation criteria.'
+            },
+            'select-reference-checks': {
+                title: 'Reference Checks and Site Visits',
+                description: 'Coordination of reference calls and site visits to organizations using the proposed systems.'
+            },
+            'select-contract-review': {
+                title: 'Contract Negotiation Support',
+                description: 'Expert support during contract negotiations to ensure favorable terms and conditions.'
+            },
+            'select-decision-facilitation': {
+                title: 'Decision-Making Facilitation',
+                description: 'Structured facilitation to guide stakeholders through the final selection decision process.'
+            },
+            'select-implementation-planning': {
+                title: 'Implementation Planning',
+                description: 'Initial planning for system implementation including timeline, resources, and approach.'
+            },
+            'select-change-readiness': {
+                title: 'Change Readiness Assessment',
+                description: 'Assessment of organizational readiness for change to inform implementation strategy.'
+            },
+            'select-risk-analysis': {
+                title: 'Risk Analysis and Mitigation',
+                description: 'Identification of potential risks and development of mitigation strategies.'
+            },
+            'select-timeline-development': {
+                title: 'Project Timeline Development',
+                description: 'Development of realistic project timeline with key milestones and dependencies.'
+            },
+            // Pre-Implementation Services
+            'pre-readiness-assessment': {
+                title: 'Organizational Readiness Assessment',
+                description: 'Comprehensive assessment of organizational readiness for system implementation and change.'
+            },
+            'pre-stakeholder-mapping': {
+                title: 'Stakeholder Mapping and Analysis',
+                description: 'Identification and analysis of all stakeholders, their influence, and engagement needs.'
+            },
+            'pre-communication-plan': {
+                title: 'Communication Strategy Development',
+                description: 'Development of comprehensive communication plan to keep stakeholders informed and engaged.'
+            },
+            'pre-change-champions': {
+                title: 'Change Champion Identification and Training',
+                description: 'Selection and training of change champions to support adoption throughout the organization.'
+            },
+            'pre-governance-structure': {
+                title: 'Governance Structure Design',
+                description: 'Design of project governance structure including roles, responsibilities, and decision rights.'
+            },
+            'pre-project-planning': {
+                title: 'Detailed Project Planning',
+                description: 'Development of detailed project plan including tasks, resources, timeline, and dependencies.'
+            },
+            'pre-data-migration': {
+                title: 'Data Migration Strategy',
+                description: 'Planning for data migration including data cleansing, mapping, and validation approach.'
+            },
+            'pre-integration-planning': {
+                title: 'System Integration Planning',
+                description: 'Planning for integration with existing systems and data flow requirements.'
+            },
+            'pre-training-strategy': {
+                title: 'Training Strategy and Curriculum Design',
+                description: 'Development of comprehensive training strategy and curriculum for all user groups.'
+            },
+            'pre-resource-planning': {
+                title: 'Resource Allocation and Planning',
+                description: 'Planning for resource needs including staff time, budget, and external support.'
+            },
+            'pre-risk-management': {
+                title: 'Risk Management Planning',
+                description: 'Identification of risks and development of comprehensive risk management plan.'
+            },
+            'pre-success-metrics': {
+                title: 'Success Metrics and KPIs',
+                description: 'Definition of key performance indicators and success metrics to measure implementation progress.'
+            },
+            'pre-process-mapping': {
+                title: 'Current State Process Mapping',
+                description: 'Documentation of current processes to understand what needs to change.'
+            },
+            'pre-future-design': {
+                title: 'Future State Process Design',
+                description: 'Design of future state processes optimized for the new system.'
+            },
+            'pre-kickoff-planning': {
+                title: 'Project Kickoff Planning',
+                description: 'Planning for project kickoff event to launch implementation with energy and alignment.'
+            },
+            // Implementation Support Services
+            'impl-change-management': {
+                title: 'Active Change Management Support',
+                description: 'Hands-on change management support throughout implementation to drive adoption.'
+            },
+            'impl-resistance-management': {
+                title: 'Resistance Management',
+                description: 'Proactive identification and management of resistance to ensure successful adoption.'
+            },
+            'impl-communication': {
+                title: 'Ongoing Communication and Updates',
+                description: 'Regular communication to keep stakeholders informed of progress and address concerns.'
+            },
+            'impl-training-delivery': {
+                title: 'Training Delivery and Coaching',
+                description: 'Delivery of training programs and one-on-one coaching to build user competence.'
+            },
+            'impl-adoption-monitoring': {
+                title: 'User Adoption Monitoring',
+                description: 'Tracking and reporting on user adoption metrics to identify and address issues early.'
+            },
+            'impl-issue-resolution': {
+                title: 'Issue Escalation and Resolution',
+                description: 'Support for issue escalation and resolution to keep implementation moving forward.'
+            },
+            'impl-process-optimization': {
+                title: 'Process Optimization',
+                description: 'Ongoing refinement of processes to maximize benefits from the new system.'
+            },
+            'impl-progress-tracking': {
+                title: 'Progress Tracking and Reporting',
+                description: 'Regular tracking and reporting on implementation progress against plan.'
+            },
+            'impl-stakeholder-engagement': {
+                title: 'Stakeholder Engagement Activities',
+                description: 'Ongoing engagement activities to maintain stakeholder support and involvement.'
+            },
+            'impl-quick-wins': {
+                title: 'Quick Wins Identification',
+                description: 'Identification and celebration of quick wins to build momentum and confidence.'
+            },
+            'impl-support-model': {
+                title: 'Support Model Design',
+                description: 'Design of ongoing support model to sustain system use after go-live.'
+            },
+            'impl-performance-metrics': {
+                title: 'Performance Metrics Tracking',
+                description: 'Tracking and analysis of performance metrics to demonstrate ROI and value.'
+            },
+            'impl-lessons-learned': {
+                title: 'Lessons Learned Sessions',
+                description: 'Facilitated sessions to capture lessons learned for continuous improvement.'
+            },
+            'impl-sustainment-planning': {
+                title: 'Sustainment Planning',
+                description: 'Planning for long-term sustainment of system use and continuous improvement.'
+            },
+            'impl-celebration': {
+                title: 'Success Celebration Events',
+                description: 'Planning and facilitation of events to celebrate milestones and successes.'
+            }
+        };
+
+        const selectedNotSelectedItems = {};
+        const selectedPreImplItems = {};
+        const selectedImplementingItems = {};
+
+        function showImplementationServices() {
+            const status = document.getElementById('implementationStatus').value;
+            const consultingSection = document.getElementById('consulting');
+            const notSelectedOptions = document.getElementById('not-selected-options');
+            const implementingOptions = document.getElementById('implementing-options');
+            const ctaSection = document.getElementById('digital-cta-section');
+            
+            // Hide all options first
+            notSelectedOptions.style.display = 'none';
+            implementingOptions.style.display = 'none';
+            
+            // Show or hide the consulting section based on selection
+            if (status) {
+                consultingSection.style.display = 'block';
+                
+                // Show selected option
+                if (status === 'not-selected') {
+                    notSelectedOptions.style.display = 'block';
+                } else if (status === 'implementing') {
+                    implementingOptions.style.display = 'block';
+                }
+                
+                // Show CTA section
+                ctaSection.style.display = 'block';
+                
+                // Auto-scroll to the service window
+                setTimeout(() => {
+                    consultingSection.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                }, 100);
+            } else {
+                // Hide consulting section if no status selected
+                consultingSection.style.display = 'none';
+                ctaSection.style.display = 'none';
+            }
+        }
+
+        function toggleChangeService(serviceId) {
+            const checkbox = document.getElementById(serviceId);
+            
+            // Determine which type of service this is
+            let agendaContainer, agendaItemsContainer, selectedItems;
+            
+            if (serviceId.startsWith('select-')) {
+                agendaContainer = document.getElementById('draft-services-not-selected');
+                agendaItemsContainer = document.getElementById('services-items-not-selected');
+                selectedItems = selectedNotSelectedItems;
+            } else if (serviceId.startsWith('pre-')) {
+                agendaContainer = document.getElementById('draft-services-pre-impl');
+                agendaItemsContainer = document.getElementById('services-items-pre-impl');
+                selectedItems = selectedPreImplItems;
+            } else if (serviceId.startsWith('impl-')) {
+                agendaContainer = document.getElementById('draft-services-implementing');
+                agendaItemsContainer = document.getElementById('services-items-implementing');
+                selectedItems = selectedImplementingItems;
+            }
+            
+            if (checkbox.checked) {
+                selectedItems[serviceId] = changeServiceDescriptions[serviceId];
+            } else {
+                delete selectedItems[serviceId];
+            }
+            
+            updateChangeServiceDisplay(agendaContainer, agendaItemsContainer, selectedItems);
+        }
+
+        function updateChangeServiceDisplay(agendaContainer, agendaItemsContainer, selectedItems) {
+            const itemCount = Object.keys(selectedItems).length;
+            
+            if (itemCount === 0) {
+                agendaContainer.style.display = 'none';
+                agendaItemsContainer.innerHTML = '<p class="placeholder-text">Select services above to build your plan</p>';
+            } else {
+                agendaContainer.style.display = 'block';
+                let html = '';
+                for (const [id, service] of Object.entries(selectedItems)) {
+                    html += `
+                        <div class="agenda-item">
+                            <h5>${service.title}</h5>
+                            <p>${service.description}</p>
+                        </div>
+                    `;
+                }
+                agendaItemsContainer.innerHTML = html;
+            }
+        }
+
+        function openDigitalBookingModal() {
+            document.getElementById('digitalBookingModal').style.display = 'flex';
+        }
+
+        function closeDigitalBookingModal() {
+            document.getElementById('digitalBookingModal').style.display = 'none';
+        }
+
+        function submitDigitalBooking() {
+            const selectedDate = document.querySelector('input[name="digitalBookingDate"]:checked');
+            const name = document.getElementById('digitalContactName').value;
+            const email = document.getElementById('digitalContactEmail').value;
+            const phone = document.getElementById('digitalContactPhone').value;
+            
+            if (!selectedDate) {
+                alert('Please select a date.');
+                return;
+            }
+            
+            if (!name || !email) {
+                alert('Please fill in your name and email.');
+                return;
+            }
+            
+            // Combine all selected items from all three types
+            const allSelectedItems = {
+                ...selectedNotSelectedItems,
+                ...selectedPreImplItems,
+                ...selectedImplementingItems
+            };
+            
+            // Build services summary
+            let servicesSummary = '';
+            for (const [id, service] of Object.entries(allSelectedItems)) {
+                servicesSummary += service.title + ', ';
+            }
+            servicesSummary = servicesSummary.slice(0, -2);
+            
+            // Determine implementation status
+            const status = document.getElementById('implementationStatus').value;
+            let statusName = '';
+            if (status === 'not-selected') {
+                statusName = 'We have not selected a system yet';
+            } else if (status === 'selected-not-implementing') {
+                statusName = 'We have selected a system but we have not begun implementing yet';
+            } else if (status === 'begun-implementing') {
+                statusName = 'We have begun implementing a new system';
+            }
+            
+            // Create mailto link
+            const subject = encodeURIComponent('Digital Adoption Consultation Request');
+            const body = encodeURIComponent(
+                `Name: ${name}\n` +
+                `Email: ${email}\n` +
+                `Phone: ${phone}\n` +
+                `Implementation Status: ${statusName}\n` +
+                `Preferred Date: ${selectedDate.value}\n\n` +
+                `Selected Services:\n${servicesSummary}\n\n` +
+                `Service Details:\n` +
+                Object.values(allSelectedItems).map(s => `- ${s.title}: ${s.description}`).join('\n')
+            );
+            
+            window.location.href = `mailto:your-email@transformlocalgov.com?subject=${subject}&body=${body}`;
+            
+            closeDigitalBookingModal();
+            alert('Your consultation request has been prepared. Please send the email to complete your booking request.');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('digitalBookingModal');
+            if (event.target === modal) {
+                closeDigitalBookingModal();
+            }
+        }
+        
+        // Accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const isActive = this.classList.contains('active');
+                    
+                    // Close all accordions
+                    accordionHeaders.forEach(h => {
+                        h.classList.remove('active');
+                        h.nextElementSibling.classList.remove('active');
+                    });
+                    
+                    // Open clicked accordion if it wasn't already open
+                    if (!isActive) {
+                        this.classList.add('active');
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
+

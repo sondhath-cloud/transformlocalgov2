@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Samples - TransformLocalGov</title>
+  <link rel="icon" type="image/png" href="../assets/images/TLGLogo.png">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="carousel-component/carousel-with-tech-stack.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #000000;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    .showcase-header {
+      text-align: center;
+      padding: 3rem 2rem 2rem;
+      color: white;
+    }
+    
+    .showcase-header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+    
+    .showcase-header .description {
+      font-size: 1.1rem;
+      opacity: 0.95;
+      max-width: 900px;
+      margin: 0 auto;
+      line-height: 1.8;
+      font-weight: 400;
+    }
+    
+    .carousel-section {
+      padding: 2rem 2rem 3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 1150px;
+    }
+    
+    #projectsCarousel {
+      width: 100%;
+      max-width: 1600px;
+      height: 1150px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    
+    .instructions {
+      text-align: center;
+      color: white;
+      padding: 0 2rem 2rem;
+      opacity: 0.9;
+      font-size: 1rem;
+    }
+    
+    .instructions p {
+      margin-bottom: 0.5rem;
+    }
+    
+    .keyboard-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      margin-top: 1rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .key {
+      background: white;
+      color: #333;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    @media (max-width: 768px) {
+      .showcase-header h1 {
+        font-size: 2rem;
+      }
+      
+      .showcase-header .description {
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+      
+      #projectsCarousel {
+        height: 885px;
+      }
+      
+      .keyboard-hint {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px;">
+                    <img src="../assets/images/TLGLogo.png" alt="TransformLocalGov Logo" style="height: 40px; width: auto;">
+                    <span class="logo-text">TransformLocalGov</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="../facilitation.html" class="nav-link">Facilitation</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../digital-adoption.html" class="nav-link">Digital Adopt</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../custom-tools.html" class="nav-link">Web/Apps</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../order.html" class="nav-link">Order</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../resources.html" class="nav-link">Resources</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+  
+  <section class="carousel-section">
+    <div id="projectsCarousel" class="carousel-container"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+      <div class="footer-content">
+          <div class="footer-text">
+              <p>&copy; 2025 TransformLocalGov. All rights reserved.</p>
+              <p>Email: info@transformlocalgov.com | Phone: 512-521-9888</p>
+          </div>
+          <div class="footer-middle">
+              <a href="../careers.html" class="footer-link">Careers</a>
+          </div>
+          <div class="social-links">
+              <a href="https://www.linkedin.com/in/sondrahathaway/" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>
+              <a href="https://github.com/sondhath-cloud" target="_blank" rel="noopener noreferrer" class="social-link">GitHub</a>
+              <a href="https://www.youtube.com/@transformlocalgov" target="_blank" rel="noopener noreferrer" class="social-link">YouTube</a>
+          </div>
+      </div>
+  </footer>
+
+  <script src="carousel-component/carousel-with-tech-stack.js"></script>
+  <script>
+    // Comprehensive project data with tech stacks
+    const projects = [
+      {
+        image: 'carousel-component/demopicstakeholder.png',
+        title: 'Persona Cards',
+        description: 'Dynamic stakeholder impact identification tool with interactive avatar cards. Features progress tracking, data visualization, and Supabase database integration for managing stakeholder information and analysis.',
+        techStack: ['HTML', 'CSS', 'JavaScript', 'Supabase', 'API', 'Database', 'Responsive']
+      },
+      {
+        image: 'carousel-component/democommsurvey.png',
+        title: 'Community Survey',
+        description: 'Advanced survey platform using Bradley-Terry pairwise comparison analysis. Collects community priorities through strategic comparisons, generates statistical insights, and exports data to CSV for further analysis.',
+        techStack: ['HTML', 'CSS', 'JavaScript', 'PHP', 'CSV', 'Responsive']
+      },
+      {
+        image: 'carousel-component/DataMigration.png',
+        title: 'Data Quest',
+        description: 'Gamified data cleaning platform that transforms mundane tasks into an addictive experience. Features missions, XP leveling, achievement badges, team challenges, and a stunning neon cyberpunk aesthetic with particle effects.',
+        techStack: ['HTML', 'CSS', 'JavaScript', 'Canvas', 'LocalStorage', 'Responsive']
+      },
+      {
+        image: '../assets/images/CommAssess.png',
+        title: 'Connection Assessment',
+        description: 'Comprehensive relationship tracking and assessment tool with interactive dashboards. Features connection quality metrics, personalized recommendations, progress tracking, and visual analytics with Chart.js integration.',
+        techStack: ['HTML', 'CSS', 'JavaScript', 'Chart.js', 'Responsive'],
+        buttonText: 'Try Assessment',
+        buttonAction: 'window.open("https://transformlocalgov.com/connection-assessment", "_blank")'
+      }
+    ];
+    
+    // Initialize the carousel with projects
+    const carousel = createCarousel('projectsCarousel', projects, {
+      autoPlay: false,
+      autoPlayInterval: 6000
+    });
+    
+    console.log(`Portfolio showcase initialized with ${projects.length} projects`);
+  </script>
+  
+  <script src="../script.js"></script>
+</body>
+</html>
+

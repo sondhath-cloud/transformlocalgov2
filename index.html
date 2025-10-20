@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TransformLocalGov - Local Government Transformation</title>
+    <meta name="description"
+        content="Firm specializing in digital adoption of new or updated software implementations and facilitation of strategic planning and learning initiatives to transform local government improved customer service, higher employee engagement, and lower regrettable turnover.">
+    <link rel="icon" type="image/png" href="assets/images/TLGLogo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+    <!-- Stripe JavaScript SDK -->
+    <script src="https://js.stripe.com/v3/"></script>
+
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px;">
+                    <img src="assets/images/TLGLogo.png" alt="TransformLocalGov Logo" style="height: 40px; width: auto;">
+                    <span class="logo-text">TransformLocalGov</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="facilitation.html" class="nav-link">Facilitation</a>
+                </li>
+                <li class="nav-item">
+                    <a href="digital-adoption.html" class="nav-link">Digital Adopt</a>
+                </li>
+                <li class="nav-item">
+                    <a href="custom-tools.html" class="nav-link">Web/Apps</a>
+                </li>
+                <li class="nav-item">
+                    <a href="order.html" class="nav-link">Order</a>
+                </li>
+                <li class="nav-item">
+                    <a href="resources.html" class="nav-link">Resources</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Fly-in Movie Title Component -->
+    <section class="fly-in-movie-title">
+        <div id="fly-in">  
+            <div class="fly-in-logo-container"><img src="assets/images/TLGLogo.png" alt="TransformLocalGov Logo" class="fly-in-logo"></div>
+            <div><span>Facilitation that</span> Builds Teams</div>
+            <div>Strategic Planning <span>and</span> Execution</div>
+            <div><span>Websites that</span> Connect</div>
+            <div>Culture <span>by Design</span></div>
+            <div><span>Apps that</span> Engage</div>
+            <div><span>Build</span> Capacity</div>
+            <div><span>Sustain</span> Change</div>
+            <div><span>Organizational</span> Reboot</div>
+            <div>Leadership Team <span>Development</span></div>
+        </div>
+    </section>
+
+    <!-- Main Hero Section -->
+    <section class="main-hero">
+        <div class="main-hero-content">
+            <div class="main-hero-text">
+                <h1 class="main-hero-title">TransformLocalGov</h1>
+                <p class="main-hero-subtitle">Sondra Hathaway and team empower communities through digital innovation and organizational excellence. We help local governments modernize their operations, improve services, reduce regrettable turnover, and build sustainable change.</p>
+                <div class="main-hero-buttons">
+                    <a href="facilitation.html" class="cta-button">Facilitation</a>
+                    <a href="digital-adoption.html" class="cta-button">Digital Adopt</a>
+                    <a href="custom-tools.html" class="cta-button">Custom Tools</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-modal-content">
+            <span class="close-modal" onclick="closeVideoModal()">&times;</span>
+            <video id="modalVideo" controls poster="assets/images/video_thumbnail.jpg">
+                <source src="assets/images/we-love-change.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <!-- Company Logo Slider Section -->
+    <section class="logo-slider-section">
+        <div class="logos-container">
+            <div class="logo-slider-container">
+                <div class="slider">
+                    <div class="logos">
+                        <img src="assets/logos/cityofamarillo-logo-1024x647.png" alt="Amarillo, TX">
+                        <img src="assets/logos/BoulderCounty.png" alt="Boulder County">
+                        <img src="assets/logos/City-of-Plano-Logo-with-Tagline.png" alt="City of Plano">
+                        <img src="assets/logos/CromwellCT.png" alt="Cromwell, CT">
+                        <img src="assets/logos/ennis.png" alt="Ennis">
+                        <img src="assets/logos/FriscoTX.png" alt="Frisco, TX">
+                        <img src="assets/logos/GY-logo-Letterhead.webp" alt="GY">
+                        <img src="assets/logos/cityofphoenix.png" alt="City of Phoenix">
+                        <img src="assets/logos/LaCrosseCountyWI.png" alt="La Crosse County, WI">
+                        <img src="assets/logos/MarionCountyOR.png" alt="Marion County, OR">
+                        <img src="assets/logos/MonroeCountyFL.png" alt="Monroe County, FL">
+                        <img src="assets/logos/LouisvilleKY.png" alt="Louisville, KY">
+                        <img src="assets/logos/PeoriaIL.png" alt="Peoria, IL">
+                        <img src="assets/logos/Seal_of_Nashville,_Tennessee.png" alt="Nashville, TN">
+                        <img src="assets/logos/WheatRidgeCO.png" alt="Wheat Ridge, CO">
+                        <img src="assets/logos/Seal_of_Cleveland,_Ohio.png" alt="Cleveland, OH">
+                        <img src="assets/logos/YamhillCountyOR.png" alt="Yamhill County, OR">
+                        <!-- Duplicate for seamless loop -->
+                        <img src="assets/logos/cityofamarillo-logo-1024x647.png" alt="Amarillo, TX">
+                        <img src="assets/logos/BoulderCounty.png" alt="Boulder County">
+                        <img src="assets/logos/City-of-Plano-Logo-with-Tagline.png" alt="City of Plano">
+                        <img src="assets/logos/CromwellCT.png" alt="Cromwell, CT">
+                        <img src="assets/logos/ennis.png" alt="Ennis">
+                        <img src="assets/logos/FriscoTX.png" alt="Frisco, TX">
+                        <img src="assets/logos/GY-logo-Letterhead.webp" alt="GY">
+                        <img src="assets/logos/cityofphoenix.png" alt="City of Phoenix">
+                        <img src="assets/logos/LaCrosseCountyWI.png" alt="La Crosse County, WI">
+                        <img src="assets/logos/MarionCountyOR.png" alt="Marion County, OR">
+                        <img src="assets/logos/MonroeCountyFL.png" alt="Monroe County, FL">
+                        <img src="assets/logos/LouisvilleKY.png" alt="Louisville, KY">
+                        <img src="assets/logos/PeoriaIL.png" alt="Peoria, IL">
+                        <img src="assets/logos/Seal_of_Nashville,_Tennessee.png" alt="Nashville, TN">
+                        <img src="assets/logos/WheatRidgeCO.png" alt="Wheat Ridge, CO">
+                        <img src="assets/logos/Seal_of_Cleveland,_Ohio.png" alt="Cleveland, OH">
+                        <img src="assets/logos/YamhillCountyOR.png" alt="Yamhill County, OR">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer show-links">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2025 TransformLocalGov. All rights reserved.</p>
+                    <p>Email: info@transformlocalgov.com | Phone: 512-521-9888</p>
+                </div>
+                <div class="footer-middle">
+                    <a href="careers.html" class="footer-link">Careers</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/sondrahathaway/" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>
+                    <a href="https://github.com/sondhath-cloud" target="_blank" rel="noopener noreferrer" class="social-link">GitHub</a>
+                    <a href="https://www.youtube.com/@transformlocalgov" target="_blank" rel="noopener noreferrer" class="social-link">YouTube</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="script.js"></script>
+    
+    <!-- Payment Success/Cancel Handler -->
+    <script>
+        // Check for payment success/cancel parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const paymentStatus = urlParams.get('payment');
+        const sessionId = urlParams.get('session_id');
+        
+        if (paymentStatus === 'success') {
+            // Show success message
+            showNotification('🎉 Payment successful! Your subscription is now active.', 'success');
+            
+            // Scroll to subscription section
+            setTimeout(() => {
+                document.getElementById('subscription').scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            }, 1000);
+            
+            // Clean up URL
+            window.history.replaceState({}, document.title, window.location.pathname);
+        } else if (paymentStatus === 'cancelled') {
+            // Show cancel message
+            showNotification('Payment was cancelled. No charges were made.', 'error');
+            
+            // Clean up URL
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+    </script>
+</body>
+
+</html>
