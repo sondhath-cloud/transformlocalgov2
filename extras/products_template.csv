@@ -1,0 +1,16 @@
+name,description,price,currency,billing_type
+Strategic Planning,Comprehensive strategic planning services for your organization,5000,usd,one_time
+Organizational Assessment,In-depth assessment of organizational structure and processes,3000,usd,one_time
+Facilitation Services - Half Day,Professional facilitation for half-day sessions,1500,usd,one_time
+Facilitation Services - Full Day,Professional facilitation for full-day workshops,2500,usd,one_time
+Change Management Workshop,Interactive workshop on managing organizational change,2000,usd,one_time
+Leadership Development,Customized leadership development program,4000,usd,one_time
+Team Building Session,Engaging team building activities and exercises,1200,usd,one_time
+Vision and Mission Workshop,Collaborative workshop to define vision and mission,1500,usd,one_time
+Process Improvement Consultation,Expert consultation on process optimization,3500,usd,one_time
+Stakeholder Engagement,Strategic stakeholder engagement and communication,2500,usd,one_time
+Monthly Newsletter Subscription,Monthly insights and updates,29,usd,recurring_monthly
+Annual Newsletter Subscription,Annual insights and updates,299,usd,recurring_yearly
+Consulting Retainer - Monthly,Monthly consulting retainer for ongoing support,2000,usd,recurring_monthly
+Consulting Retainer - Annual,Annual consulting retainer with priority support,20000,usd,recurring_yearly
+

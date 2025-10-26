@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - TransformLocalGov</title>
+    <meta name="description" content="Explore our comprehensive services including strategic planning, teambuilding, training, and digital adoption solutions designed to transform your local government organization.">
+    <link rel="icon" type="image/png" href="assets/images/TLGLogo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+    <!-- Stripe JavaScript SDK -->
+    <script src="https://js.stripe.com/v3/"></script>
+    
+    <style>
+        .order-page {
+            padding: 2rem;
+            background: #f8f9fa;
+            min-height: 100vh;
+        }
+        
+        .order-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .services-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .service-description {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+        }
+        
+        .service-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-image.teambuilding-crop {
+            object-position: 33% 0;
+        }
+        
+        .service-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-orange);
+            margin-bottom: 1rem;
+        }
+        
+        .service-overview {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-benefits {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .service-benefits li {
+            padding: 0.5rem 0;
+            color: #666;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .service-benefits li:before {
+            content: "✓";
+            color: var(--primary-orange);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .accordions-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .order-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            margin-top: 4rem;
+        }
+        
+        .order-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-orange);
+            margin-bottom: 1rem;
+        }
+        
+        .order-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .accordion-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        
+        .accordion-header {
+            background: var(--primary-orange);
+            color: white;
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+            border: none;
+            width: 100%;
+            text-align: left;
+        }
+        
+        .accordion-header:hover {
+            background: var(--dark-orange);
+        }
+        
+        .accordion-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .accordion-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .accordion-header.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: white;
+        }
+        
+        .accordion-content.active {
+            max-height: 2000px;
+        }
+        
+        .service-items {
+            padding: 0;
+        }
+        
+        .service-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            transition: background 0.3s ease;
+        }
+        
+        .service-item:hover {
+            background: #f8f9fa;
+        }
+        
+        .service-item:last-child {
+            border-bottom: none;
+        }
+        
+        .service-checkbox {
+            margin-right: 1rem;
+            margin-top: 0.25rem;
+            transform: scale(1.2);
+            accent-color: var(--primary-orange);
+        }
+        
+        .service-content {
+            flex: 1;
+        }
+        
+        .service-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .service-description {
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 0;
+        }
+        
+        .service-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-orange);
+            min-width: 100px;
+            text-align: right;
+        }
+        
+        .order-summary {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-top: 2rem;
+            position: sticky;
+            top: 2rem;
+        }
+        
+        .summary-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .selected-items {
+            margin-bottom: 1.5rem;
+        }
+        
+        .selected-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .selected-item:last-child {
+            border-bottom: none;
+        }
+        
+        .item-name {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .item-price {
+            color: var(--primary-orange);
+            font-weight: 600;
+        }
+        
+        .total-section {
+            border-top: 2px solid var(--primary-orange);
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .total-line {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .order-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-direction: column;
+        }
+        
+        .btn-consultation {
+            background: var(--primary-orange);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            display: block;
+        }
+        
+        .btn-consultation:hover {
+            background: var(--dark-orange);
+            transform: translateY(-2px);
+        }
+        
+        .btn-purchase {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            display: block;
+        }
+        
+        .btn-purchase:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+        
+        .btn-purchase:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .contact-info {
+            text-align: center;
+            padding: 1rem 0;
+        }
+        
+        .contact-info p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 768px) {
+            .order-page {
+                padding: 1rem;
+            }
+            
+            .order-title {
+                font-size: 2rem;
+            }
+            
+            .services-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .service-description {
+                position: static;
+                order: 2;
+            }
+            
+            .accordions-column {
+                order: 1;
+            }
+            
+            .service-image {
+                height: 225px;
+            }
+            
+            .service-title {
+                font-size: 1.5rem;
+            }
+            
+            .service-overview {
+                font-size: 1rem;
+            }
+            
+            .service-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .service-price {
+                margin-top: 1rem;
+                text-align: left;
+            }
+            
+            .order-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px;">
+                    <img src="assets/images/TLGLogo.png" alt="TransformLocalGov Logo" style="height: 40px; width: auto;">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="facilitation.html" class="nav-link">Facilitation</a>
+                </li>
+                <li class="nav-item">
+                    <a href="digital-adoption.html" class="nav-link no-break">Digital Adopt</a>
+                </li>
+                <li class="nav-item">
+                    <a href="custom-tools.html" class="nav-link">Web/Apps</a>
+                </li>
+                <li class="nav-item">
+                    <a href="services.html" class="nav-link active">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="resources.html" class="nav-link">Resources</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="connect.html" class="nav-link">Connect</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Services Page -->
+    <div class="order-page">
+        <div class="order-container">
+            <div class="order-header">
+                <h1 class="order-title">Our Services</h1>
+                <p class="order-subtitle">Explore our comprehensive range of services designed to transform your local government organization. Contact us to discuss your specific needs and get a customized proposal.</p>
+            </div>
+
+            <form id="order-form">
+                <!-- Services Layout -->
+                <div class="services-layout">
+                    <!-- Left Column: Service Description -->
+                    <div class="service-description" id="service-description">
+                        <img src="assets/images/strategic2.png" alt="Strategic Planning" class="service-image" id="service-image">
+                        <h2 class="service-title" id="service-title">Strategic Planning</h2>
+                        <p class="service-overview" id="service-overview">Comprehensive strategic planning services to help your organization define its vision, mission, and long-term goals. Our structured approach ensures alignment across all levels of your organization.</p>
+                        <ul class="service-benefits" id="service-benefits">
+                            <li>Clear vision and mission development</li>
+                            <li>Stakeholder engagement and input</li>
+                            <li>Goal setting and action planning</li>
+                            <li>Implementation roadmap creation</li>
+                            <li>Progress tracking and evaluation</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Right Column: Service Tasks -->
+                    <div class="accordions-column">
+                        <!-- Strategic Planning Tasks -->
+                        <div class="accordion-container">
+                            <button type="button" class="accordion-header" data-accordion="strategic-planning">
+                                <h2>Strategic Planning Tasks</h2>
+                                <span class="accordion-icon">▼</span>
+                            </button>
+                            <div class="accordion-content" id="strategic-planning">
+                                <div class="service-items">
+                                    <div class="service-item">
+                                        <div class="service-content">
+                                            <div class="service-name">Orientation</div>
+                                            <div class="service-description">Comprehensive orientation sessions to align your team with organizational goals and strategic direction.</div>
+                                        </div>
+                                    </div>
+                                    <div class="service-item">
+                                        <div class="service-content">
+                                            <div class="service-name">Bi-weekly Project Meetings</div>
+                                            <div class="service-description">Regular project check-ins to ensure progress tracking and maintain momentum throughout your strategic planning process.</div>
+                                        </div>
+                                    </div>
+                                    <div class="service-item">
+                                        <div class="service-content">
+                                            <div class="service-name">Project Kickoff Meeting</div>
+                                            <div class="service-description">Launch your strategic planning initiative with a comprehensive kickoff meeting that sets clear expectations and timelines.</div>
+                                        </div>
+                                    </div>
+                                    <div class="service-item">
+                                        <div class="service-content">
+                                            <div class="service-name">Project Announcement</div>
+                                            <div class="service-description">Professional communication strategy to announce your strategic planning initiative to stakeholders and community members.</div>
+                                        </div>
+                                    </div>
+                                    <div class="service-item">
+                                        <div class="service-content">
+                                            <div class="service-name">Interviews</div>
+                                            <div class="service-description">Structured interviews with key stakeholders to gather insights and perspectives for your strategic planning process.</div>
+                                        </div>
+                                    </div>
+                                    <div class="service-item">
+                                        <div class="service-content">
+                                            <div class="service-name">Current State Report</div>
+                                            <div class="service-description">Comprehensive analysis of your organization's current state to inform strategic planning decisions.</div>
+                                        </div>
+                                    </div>
+                                    <div class="service-item">
+                                        <div class="service-content">
+                                            <div class="service-name">Mid-year Review</div>
+                                            <div class="service-description">Progress assessment and strategic plan refinement at the midpoint of your planning cycle.</div>
+                                        </div>
+                                    </div>
+                                    <div class="service-item">
+                                        <div class="service-content">
+                                            <div class="service-name">Online Feedback</div>
+                                            <div class="service-description">Digital platforms and tools to collect and analyze stakeholder feedback throughout the planning process.</div>
+                                        </div>
+                                    </div>
+                                    <div class="service-item">
+                                        <div class="service-content">
+                                            <div class="service-name">Public Meeting and Teambuilding for Elected Officials</div>
+                                            <div class="service-description">Specialized facilitation for elected officials including public meetings and team building activities.</div>
+                                        </div>
+                                    </div>
+                                    <div class="service-item">
+                                        <div class="service-content">
+                                            <div class="service-name">Strategic Priority and High-Level Goals Document</div>
+                                            <div class="service-description">Development of clear strategic priorities and high-level goals that guide organizational direction.</div>
+                                        </div>
+                                    </div>
+                                    <div class="service-item">
+                                        <div class="service-content">
+                                            <div class="service-name">Program Inventory Exercise</div>
+                                            <div class="service-description">Comprehensive review and cataloging of existing programs to inform strategic planning decisions.</div>
+                                        </div>
+                                    </div>
+                                    <div class="service-item">
+                                        <div class="service-content">
+                                            <div class="service-name">Manager Toolkit</div>
+                                            <div class="service-description">Resources and tools designed to help managers implement and sustain strategic planning initiatives.</div>
+                                        </div>
+                                    </div>
+                                    <div class="service-item">
+                                        <div class="service-content">
+                                            <div class="service-name">Strategy Conversation Cofacilitation</div>
+                                            <div class="service-description">Collaborative facilitation of strategic conversations to ensure productive and meaningful dialogue.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- Digital Adoption Tasks -->
+                        <div class="accordion-container">
+                            <button type="button" class="accordion-header" data-accordion="digital-adoption">
+                                <h2>Digital Adoption Tasks</h2>
+                                <span class="accordion-icon">▼</span>
+                            </button>
+                            <div class="accordion-content" id="digital-adoption">
+                                <div class="service-items">
+                                    <div class="service-item">
+                                        <input type="checkbox" class="service-checkbox" name="service[]" value="digital_readiness_assessment" data-price="1500" data-name="Digital Readiness Assessment">
+                                        <div class="service-content">
+                                            <div class="service-name">Digital Readiness Assessment</div>
+                                            <div class="service-description">Comprehensive assessment of your organization's readiness for digital transformation and technology adoption.</div>
+                                        </div>
+                                        <div class="service-price">$1,500</div>
+                                    </div>
+                                    <div class="service-item">
+                                        <input type="checkbox" class="service-checkbox" name="service[]" value="software_implementation_support" data-price="4000" data-name="Software Implementation Support">
+                                        <div class="service-content">
+                                            <div class="service-name">Software Implementation Support</div>
+                                            <div class="service-description">End-to-end support for software implementation including planning, training, and change management.</div>
+                                        </div>
+                                        <div class="service-price">$4,000</div>
+                                    </div>
+                                    <div class="service-item">
+                                        <input type="checkbox" class="service-checkbox" name="service[]" value="user_training_program" data-price="2500" data-name="User Training Program">
+                                        <div class="service-content">
+                                            <div class="service-name">User Training Program</div>
+                                            <div class="service-description">Comprehensive training program for end users on new software systems and digital tools.</div>
+                                        </div>
+                                        <div class="service-price">$2,500</div>
+                                    </div>
+                                    <div class="service-item">
+                                        <input type="checkbox" class="service-checkbox" name="service[]" value="change_management_digital" data-price="3200" data-name="Digital Change Management">
+                                        <div class="service-content">
+                                            <div class="service-name">Digital Change Management</div>
+                                            <div class="service-description">Specialized change management support for digital transformation initiatives and technology adoption.</div>
+                                        </div>
+                                        <div class="service-price">$3,200</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teambuilding Service -->
+                <div class="services-layout">
+                    <!-- Left Column: Teambuilding Description -->
+                    <div class="service-description" id="teambuilding-description">
+                        <img src="assets/images/retreat.png" alt="Teambuilding & Retreat" class="service-image" id="teambuilding-image">
+                        <h2 class="service-title" id="teambuilding-title">Teambuilding & Retreat</h2>
+                        <p class="service-overview" id="teambuilding-overview">Transform your team dynamics with our comprehensive teambuilding and retreat services. We focus on building stronger relationships, improving communication, and enhancing collaboration.</p>
+                        <ul class="service-benefits" id="teambuilding-benefits">
+                            <li>Enhanced team communication</li>
+                            <li>Improved collaboration skills</li>
+                            <li>Conflict resolution strategies</li>
+                            <li>Leadership development</li>
+                            <li>Team bonding activities</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Right Column: Teambuilding Tasks -->
+                    <div class="accordions-column">
+                        <div class="accordion-container">
+                            <button type="button" class="accordion-header" data-accordion="teambuilding-tasks">
+                                <h2>Teambuilding Tasks</h2>
+                                <span class="accordion-icon">▼</span>
+                            </button>
+                            <div class="accordion-content" id="teambuilding-tasks">
+                                <div class="service-items">
+                                    <div class="service-item">
+                                        <input type="checkbox" class="service-checkbox" name="service[]" value="team_retreat_half_day" data-price="2000" data-name="Team Retreat - Half Day">
+                                        <div class="service-content">
+                                            <div class="service-name">Team Retreat - Half Day</div>
+                                            <div class="service-description">Half-day team building retreat with activities focused on communication, collaboration, and team dynamics.</div>
+                                        </div>
+                                        <div class="service-price">$2,000</div>
+                                    </div>
+                                    <div class="service-item">
+                                        <input type="checkbox" class="service-checkbox" name="service[]" value="team_retreat_full_day" data-price="3500" data-name="Team Retreat - Full Day">
+                                        <div class="service-content">
+                                            <div class="service-name">Team Retreat - Full Day</div>
+                                            <div class="service-description">Full-day intensive team building retreat with comprehensive activities and team development exercises.</div>
+                                        </div>
+                                        <div class="service-price">$3,500</div>
+                                    </div>
+                                    <div class="service-item">
+                                        <input type="checkbox" class="service-checkbox" name="service[]" value="leadership_team_building" data-price="4500" data-name="Leadership Team Building">
+                                        <div class="service-content">
+                                            <div class="service-name">Leadership Team Building</div>
+                                            <div class="service-description">Specialized retreat for leadership teams focusing on strategic alignment and executive collaboration.</div>
+                                        </div>
+                                        <div class="service-price">$4,500</div>
+                                    </div>
+                                    <div class="service-item">
+                                        <input type="checkbox" class="service-checkbox" name="service[]" value="conflict_resolution_workshop" data-price="1800" data-name="Conflict Resolution Workshop">
+                                        <div class="service-content">
+                                            <div class="service-name">Conflict Resolution Workshop</div>
+                                            <div class="service-description">Workshop focused on resolving team conflicts and building stronger working relationships.</div>
+                                        </div>
+                                        <div class="service-price">$1,800</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Training Service -->
+                <div class="services-layout">
+                    <!-- Left Column: Training Description -->
+                    <div class="service-description" id="training-description">
+                        <img src="assets/images/Training.jpeg" alt="Instructor-Led Training" class="service-image" id="training-image">
+                        <h2 class="service-title" id="training-title">Instructor-Led Training</h2>
+                        <p class="service-overview" id="training-overview">Professional training programs designed to develop essential skills across your organization. Our expert facilitators deliver engaging, practical training that drives real results.</p>
+                        <ul class="service-benefits" id="training-benefits">
+                            <li>Leadership skill development</li>
+                            <li>Communication enhancement</li>
+                            <li>Change management expertise</li>
+                            <li>Project management training</li>
+                            <li>Customer service excellence</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Right Column: Training Tasks -->
+                    <div class="accordions-column">
+                        <div class="accordion-container">
+                            <button type="button" class="accordion-header" data-accordion="training-tasks">
+                                <h2>Training Tasks</h2>
+                                <span class="accordion-icon">▼</span>
+                            </button>
+                            <div class="accordion-content" id="training-tasks">
+                                <div class="service-items">
+                                    <div class="service-item">
+                                        <input type="checkbox" class="service-checkbox" name="service[]" value="leadership_development_training" data-price="3000" data-name="Leadership Development Training">
+                                        <div class="service-content">
+                                            <div class="service-name">Leadership Development Training</div>
+                                            <div class="service-description">Comprehensive leadership training program covering essential management and leadership skills.</div>
+                                        </div>
+                                        <div class="service-price">$3,000</div>
+                                    </div>
+                                    <div class="service-item">
+                                        <input type="checkbox" class="service-checkbox" name="service[]" value="communication_skills_training" data-price="2200" data-name="Communication Skills Training">
+                                        <div class="service-content">
+                                            <div class="service-name">Communication Skills Training</div>
+                                            <div class="service-description">Training program focused on improving verbal, written, and non-verbal communication skills.</div>
+                                        </div>
+                                        <div class="service-price">$2,200</div>
+                                    </div>
+                                    <div class="service-item">
+                                        <input type="checkbox" class="service-checkbox" name="service[]" value="change_management_training" data-price="2800" data-name="Change Management Training">
+                                        <div class="service-content">
+                                            <div class="service-name">Change Management Training</div>
+                                            <div class="service-description">Training on managing organizational change, including strategies for successful implementation.</div>
+                                        </div>
+                                        <div class="service-price">$2,800</div>
+                                    </div>
+                                    <div class="service-item">
+                                        <input type="checkbox" class="service-checkbox" name="service[]" value="project_management_training" data-price="2500" data-name="Project Management Training">
+                                        <div class="service-content">
+                                            <div class="service-name">Project Management Training</div>
+                                            <div class="service-description">Comprehensive project management training covering planning, execution, and monitoring techniques.</div>
+                                        </div>
+                                        <div class="service-price">$2,500</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Digital Adoption Service -->
+                <div class="services-layout">
+                    <!-- Left Column: Digital Adoption Description -->
+                    <div class="service-description" id="digital-description">
+                        <img src="assets/images/training2.jpeg" alt="Digital Adoption" class="service-image" id="digital-image">
+                        <h2 class="service-title" id="digital-title">Digital Adoption</h2>
+                        <p class="service-overview" id="digital-overview">Navigate digital transformation with confidence. Our digital adoption services help organizations successfully implement new technologies and optimize digital workflows.</p>
+                        <ul class="service-benefits" id="digital-benefits">
+                            <li>Digital readiness assessment</li>
+                            <li>Software implementation support</li>
+                            <li>User training programs</li>
+                            <li>Change management for technology</li>
+                            <li>Workflow optimization</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Right Column: Digital Adoption Tasks -->
+                    <div class="accordions-column">
+                        <div class="accordion-container">
+                            <button type="button" class="accordion-header" data-accordion="digital-tasks">
+                                <h2>Digital Adoption Tasks</h2>
+                                <span class="accordion-icon">▼</span>
+                            </button>
+                            <div class="accordion-content" id="digital-tasks">
+                                <div class="service-items">
+                                    <div class="service-item">
+                                        <input type="checkbox" class="service-checkbox" name="service[]" value="digital_readiness_assessment" data-price="1500" data-name="Digital Readiness Assessment">
+                                        <div class="service-content">
+                                            <div class="service-name">Digital Readiness Assessment</div>
+                                            <div class="service-description">Comprehensive assessment of your organization's readiness for digital transformation and technology adoption.</div>
+                                        </div>
+                                        <div class="service-price">$1,500</div>
+                                    </div>
+                                    <div class="service-item">
+                                        <input type="checkbox" class="service-checkbox" name="service[]" value="software_implementation_support" data-price="4000" data-name="Software Implementation Support">
+                                        <div class="service-content">
+                                            <div class="service-name">Software Implementation Support</div>
+                                            <div class="service-description">End-to-end support for software implementation including planning, training, and change management.</div>
+                                        </div>
+                                        <div class="service-price">$4,000</div>
+                                    </div>
+                                    <div class="service-item">
+                                        <input type="checkbox" class="service-checkbox" name="service[]" value="user_training_program" data-price="2500" data-name="User Training Program">
+                                        <div class="service-content">
+                                            <div class="service-name">User Training Program</div>
+                                            <div class="service-description">Comprehensive training program for end users on new software systems and digital tools.</div>
+                                        </div>
+                                        <div class="service-price">$2,500</div>
+                                    </div>
+                                    <div class="service-item">
+                                        <input type="checkbox" class="service-checkbox" name="service[]" value="change_management_digital" data-price="3200" data-name="Digital Change Management">
+                                        <div class="service-content">
+                                            <div class="service-name">Digital Change Management</div>
+                                            <div class="service-description">Specialized change management support for digital transformation initiatives and technology adoption.</div>
+                                        </div>
+                                        <div class="service-price">$3,200</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="order-summary">
+                    <h3 class="summary-title">Ready to Get Started?</h3>
+                    <div class="contact-info">
+                        <p>Contact us to discuss your specific needs and receive a customized proposal for our services.</p>
+                        <div class="contact-buttons">
+                            <a href="connect.html" class="btn-consultation">
+                                Contact Us for Consultation
+                            </a>
+                            <a href="tel:512-521-9888" class="btn-purchase">
+                                Call: 512-521-9888
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', function() {
+                const target = this.getAttribute('data-accordion');
+                const content = document.getElementById(target);
+                const icon = this.querySelector('.accordion-icon');
+                
+                // Toggle active class
+                this.classList.toggle('active');
+                content.classList.toggle('active');
+                
+                // Rotate icon
+                if (this.classList.contains('active')) {
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

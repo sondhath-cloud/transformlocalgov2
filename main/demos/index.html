@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Samples - TransformLocalGov</title>
+  <link rel="icon" type="image/png" href="../assets/images/TLGLogo.png">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #000000;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    /* White navigation text */
+    .navbar .nav-link,
+    .navbar .logo-text {
+      color: white !important;
+    }
+    
+    .navbar.scrolled .nav-link,
+    .navbar.scrolled .logo-text {
+      color: white !important;
+    }
+    
+    .navbar .hamburger .bar {
+      background-color: white !important;
+    }
+    
+    .navbar.scrolled .hamburger .bar {
+      background-color: white !important;
+    }
+    
+    .showcase-header {
+      text-align: center;
+      padding: 6rem 2rem 2rem;
+      color: white;
+    }
+    
+    .showcase-header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: var(--primary-orange);
+    }
+    
+    .showcase-header .description {
+      font-size: 1.1rem;
+      opacity: 0.95;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    /* Simple Carousel Styles */
+    .simple-carousel {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      position: relative;
+    }
+    
+    .carousel-slide {
+      display: none;
+      text-align: center;
+    }
+    
+    .carousel-slide.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .carousel-image {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      margin: 0 auto 2rem;
+      display: block;
+    }
+    
+    .carousel-info {
+      color: white;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .carousel-info h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--primary-orange);
+    }
+    
+    .carousel-info p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      color: #ccc;
+      text-align: left;
+    }
+    
+    .carousel-info .short-description {
+      display: block;
+    }
+    
+    .carousel-info .full-description {
+      display: none;
+      margin-top: 1rem;
+    }
+    
+    .carousel-info .full-description.show {
+      display: block;
+    }
+    
+    .details-toggle {
+      background: var(--primary-orange);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+    
+    .details-toggle:hover {
+      background: var(--dark-orange);
+      transform: translateY(-1px);
+    }
+    
+    .details-toggle.expanded {
+      background: var(--dark-orange);
+    }
+    
+    .tech-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin: 1.5rem 0;
+    }
+    
+    .tech-badge {
+      background: var(--primary-orange);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    
+    /* Navigation Arrows */
+    .carousel-nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .carousel-arrow {
+      background: var(--primary-orange);
+      color: white;
+      border: none;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .carousel-arrow:hover {
+      background: var(--dark-orange);
+      transform: scale(1.1);
+    }
+    
+    .carousel-arrow:active {
+      transform: scale(0.95);
+    }
+    
+    /* Carousel indicators */
+    .carousel-indicators {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    .indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .indicator.active {
+      background: var(--primary-orange);
+      width: 30px;
+      border-radius: 6px;
+    }
+    
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .showcase-header {
+        padding: 5rem 1rem 1.5rem;
+      }
+      
+      .showcase-header h1 {
+        font-size: 2rem;
+      }
+      
+      .showcase-header .description {
+        font-size: 0.95rem;
+      }
+      
+      .simple-carousel {
+        padding: 1.5rem 1rem;
+      }
+      
+      .carousel-info h2 {
+        font-size: 1.5rem;
+      }
+      
+      .carousel-info p {
+        font-size: 1rem;
+      }
+      
+      .tech-badge {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+      }
+      
+      .carousel-arrow {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .showcase-header {
+        padding: 4.5rem 0.5rem 1rem;
+      }
+      
+      .showcase-header h1 {
+        font-size: 1.75rem;
+      }
+      
+      .simple-carousel {
+        padding: 1rem 0.5rem;
+      }
+      
+      .carousel-info {
+        padding: 0 0.5rem;
+      }
+      
+      .carousel-info h2 {
+        font-size: 1.3rem;
+      }
+      
+      .carousel-info p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+      
+      .tech-badge {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.6rem;
+      }
+      
+      .carousel-arrow {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+      }
+      
+      .carousel-nav {
+        gap: 1rem;
+      }
+    }
+    
+  </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px;">
+                    <img src="../assets/images/TLGLogo.png" alt="TransformLocalGov Logo" style="height: 40px; width: auto;">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="../facilitation.html" class="nav-link">Facilitation</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../digital-adoption.html" class="nav-link no-break">Digital Adopt</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../custom-tools.html" class="nav-link">Web/Apps</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../services.html" class="nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../resources.html" class="nav-link">Resources</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../connect.html" class="nav-link">Connect</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+  
+  <!-- Showcase Header -->
+  <div class="showcase-header">
+    <h1>Project Samples</h1>
+    <p class="description">A few of our custom web applications and tools built for local government and community organizations.</p>
+  </div>
+
+  <!-- Simple Carousel -->
+  <div class="simple-carousel">
+    <div id="carouselContainer"></div>
+    
+    <!-- Navigation -->
+    <div class="carousel-nav">
+      <button class="carousel-arrow" id="prevBtn" aria-label="Previous">‹</button>
+      <button class="carousel-arrow" id="nextBtn" aria-label="Next">›</button>
+    </div>
+    
+    <!-- Indicators -->
+    <div class="carousel-indicators" id="indicators"></div>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="footer">
+      <div class="footer-content">
+          <div class="footer-text">
+              <p>&copy; 2025 TransformLocalGov. All rights reserved.</p>
+              <p>Email: info@transformlocalgov.com | Phone: 512-521-9888</p>
+          </div>
+          <div class="footer-middle">
+              <a href="../careers.html" class="footer-link">Careers</a>
+          </div>
+          <div class="social-links">
+              <a href="https://www.linkedin.com/in/sondrahathaway/" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>
+              <a href="https://github.com/sondhath-cloud" target="_blank" rel="noopener noreferrer" class="social-link">GitHub</a>
+              <a href="https://www.youtube.com/@transformlocalgov" target="_blank" rel="noopener noreferrer" class="social-link">YouTube</a>
+          </div>
+      </div>
+  </footer>
+
+  <script>
+    // Simple Carousel JavaScript
+    const projects = [
+      {
+        image: 'carousel-component/demopicstakeholder.png',
+        title: 'Stakeholder Analysis',
+        shortDescription: 'Dynamic stakeholder impact identification tool with interactive avatar cards. Features progress tracking, data visualization, and Supabase database integration.',
+        fullDescription: 'Dynamic stakeholder impact identification tool with interactive avatar cards. Features progress tracking, data visualization, and Supabase database integration.',
+        techStack: ['HTML', 'CSS', 'JavaScript', 'Database']
+      },
+      {
+        image: 'carousel-component/democommsurvey.png',
+        title: 'Community Survey',
+        shortDescription: 'Advanced survey platform using Bradley-Terry pairwise comparison analysis. Collects community priorities and generates statistical insights.',
+        fullDescription: 'Our advanced survey platform leverages Bradley-Terry pairwise comparison analysis to help organizations discover what truly matters to their stakeholders. Instead of asking people to rank long lists of priorities—which often leads to inconsistent and unreliable data—we use a smarter approach.<br><br><strong>How It Works</strong><br>Participants see just two options at a time and choose which matters more. Simple, intuitive, and proven to generate higher-quality responses. Behind the scenes, our Bradley-Terry statistical model analyzes these head-to-head comparisons to calculate robust priority rankings with measurable confidence intervals.<br><br><strong>Why Pairwise Comparisons?</strong><br>Traditional ranking surveys suffer from cognitive overload and ordering bias. Our methodology eliminates these problems by breaking complex decisions into simple binary choices. The result? More participants complete your survey, and the data you collect is statistically sound and defensible.<br><br><strong>Powerful Insights, Beautifully Presented</strong><br>Our platform automatically generates:<br>• Ranked priority lists with confidence scores<br>• Win probability matrices showing competitive relationships<br>• Visual dashboards that communicate results to any audience<br>• Statistical significance indicators to guide decision-making<br><br><strong>Built for Real-World Decisions</strong><br>Whether you\'re prioritizing community investments, product features, organizational goals, or resource allocation, our platform gives you the quantitative insights needed to make confident, data-driven decisions that reflect true stakeholder preferences.',
+        techStack: ['HTML', 'CSS', 'JavaScript', 'PHP', 'CSV']
+      },
+      {
+        image: 'carousel-component/DataMigration.png',
+        title: 'Data Quest',
+        shortDescription: 'Gamified data cleaning platform with missions, XP leveling, achievement badges, and cool neon aesthetic.',
+        fullDescription: 'Data cleaning doesn\'t have to be tedious. Our gamified platform transforms the grunt work of data preparation into an engaging experience that keeps your team motivated and productive.<br><br><strong>Earn XP, Unlock Achievements, Clean Data</strong><br>Every cleaned record earns experience points. Every completed dataset unlocks new badges. Our mission-based system breaks massive data projects into achievable quests, turning hours of monotonous work into a progression system that actually feels rewarding. Watch your team compete on leaderboards as they standardize fields, deduplicate records, and validate entries.<br><br><strong>Immersive Cyberpunk Interface</strong><br>We\'ve wrapped powerful data cleaning tools in a stunning neon aesthetic that makes work feel like play. Glowing progress bars, animated achievements, and a sleek futuristic design create an environment where data quality work becomes something your team actually wants to do.<br><br><strong>Real Results Through Engagement</strong><br>Gamification isn\'t just fun—it drives measurable outcomes. Organizations using our platform report higher completion rates, faster turnaround times, and better attention to detail. When cleaning data earns badges and levels up your profile, quality suddenly matters to everyone.<br><br><strong>Built for Teams, Designed for Individuals</strong><br>Track personal progress while contributing to team goals. Compete in daily challenges, earn rare achievements for catching tricky errors, and climb the rankings. Whether you\'re managing a data operations team or flying solo, our platform keeps motivation high and data quality higher.<br><br><strong>Power Tools Meet Player Experience</strong><br>Behind the neon glow sits enterprise-grade data cleaning functionality: pattern matching, bulk operations, validation rules, and audit trails. You get the tools you need wrapped in an experience that makes using them genuinely enjoyable.',
+        techStack: ['HTML', 'CSS', 'JavaScript', 'Canvas']
+      },
+      {
+        image: '../assets/images/CommAssess.png',
+        title: 'Connection Assessment',
+        shortDescription: 'Evaluate your organization\'s connection effectiveness with our comprehensive assessment tool. Identifies connection gaps, strengths, and improvement opportunities.',
+        fullDescription: 'Evaluate your organization\'s connection effectiveness with our comprehensive assessment tool. This interactive resource helps identify connection gaps, strengths, and opportunities for improvement across all levels of your organization.<br><br><strong>Comprehensive Connection Analysis</strong><br>Our assessment evaluates multiple dimensions of organizational connection: internal team dynamics, external stakeholder relationships, communication effectiveness, and collaboration patterns. The tool provides a holistic view of how well your organization connects internally and externally.<br><br><strong>Identify Gaps and Strengths</strong><br>Discover where your organization excels in building connections and where there are critical gaps. The assessment reveals specific areas for improvement, helping you prioritize connection-building initiatives that will have the greatest impact.<br><br><strong>Actionable Insights for All Levels</strong><br>Perfect for teams, departments, or entire organizations looking to enhance their connection strategies. The tool provides tailored recommendations based on your organization\'s size, structure, and specific challenges.<br><br><strong>Build Stronger Relationships</strong><br>Use the insights to develop targeted strategies for building stronger relationships both within your organization and with external stakeholders. Transform connection challenges into opportunities for growth and collaboration.',
+        techStack: ['HTML', 'CSS', 'JavaScript', 'Chart.js']
+      }
+    ];
+    
+    let currentSlide = 0;
+    
+    function renderCarousel() {
+      const container = document.getElementById('carouselContainer');
+      const indicatorsContainer = document.getElementById('indicators');
+      
+      // Clear containers
+      container.innerHTML = '';
+      indicatorsContainer.innerHTML = '';
+      
+      // Create slides
+      projects.forEach((project, index) => {
+        const slide = document.createElement('div');
+        slide.className = `carousel-slide ${index === currentSlide ? 'active' : ''}`;
+        
+        const techBadges = project.techStack.map(tech => 
+          `<span class="tech-badge">${tech}</span>`
+        ).join('');
+        
+        slide.innerHTML = `
+          <img src="${project.image}" alt="${project.title}" class="carousel-image">
+          <div class="carousel-info">
+            <h2>${project.title}</h2>
+            <p class="short-description">${project.shortDescription}</p>
+            <p class="full-description">${project.fullDescription}</p>
+            <button class="details-toggle" data-action="toggle-details">
+              Click for more details
+            </button>
+            <div class="tech-badges">${techBadges}</div>
+          </div>
+        `;
+        
+        container.appendChild(slide);
+        
+        // Add event listener to the button after it's created
+        const button = slide.querySelector('.details-toggle');
+        if (button) {
+          button.addEventListener('click', () => toggleDetails(button));
+        }
+        
+        // Create indicator
+        const indicator = document.createElement('div');
+        indicator.className = `indicator ${index === currentSlide ? 'active' : ''}`;
+        indicator.addEventListener('click', () => goToSlide(index));
+        indicatorsContainer.appendChild(indicator);
+      });
+    }
+    
+    function goToSlide(index) {
+      currentSlide = index;
+      renderCarousel();
+    }
+    
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % projects.length;
+      renderCarousel();
+    }
+    
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + projects.length) % projects.length;
+      renderCarousel();
+    }
+    
+    // Toggle details function
+    function toggleDetails(button) {
+      const carouselInfo = button.parentElement;
+      const fullDescription = carouselInfo.querySelector('.full-description');
+      const shortDescription = carouselInfo.querySelector('.short-description');
+      
+      if (fullDescription.classList.contains('show')) {
+        // Hide full description
+        fullDescription.classList.remove('show');
+        shortDescription.style.display = 'block';
+        button.textContent = 'Click for more details';
+        button.classList.remove('expanded');
+      } else {
+        // Show full description
+        fullDescription.classList.add('show');
+        shortDescription.style.display = 'none';
+        button.textContent = 'Show less';
+        button.classList.add('expanded');
+      }
+    }
+
+    // Initialize carousel
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCarousel();
+      
+      document.getElementById('nextBtn').addEventListener('click', nextSlide);
+      document.getElementById('prevBtn').addEventListener('click', prevSlide);
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prevSlide();
+        if (e.key === 'ArrowRight') nextSlide();
+      });
+    });
+  </script>
+  
+  <script src="../script.js"></script>
+</body>
+</html>
+
