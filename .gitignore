@@ -48,8 +48,10 @@ coverage/
 tmp/
 temp/
 
-# Stripe keys (security)
+# Stripe keys and API files (security)
 api/config.php
+main/api/config.php
+extras/stripe_product_importer.py
 
 # Rate limiting files
 rate_limit.json
