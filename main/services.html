@@ -615,7 +615,7 @@
             margin: 2rem auto;
             max-width: 900px;
             position: relative;
-            transform: rotate(-0.5deg);
+            transform: rotate(0deg);
             border: 1px solid #e0e0e0;
         }
         
@@ -940,6 +940,58 @@
             .order-buttons {
                 flex-direction: column;
             }
+        }
+        
+        /* Make all text on services page match digital adoption page sizes */
+        .service-hero-subtitle {
+            font-size: 1.2rem !important;
+            line-height: 1.6 !important;
+        }
+        
+        .page-hero-subtitle {
+            font-size: 1.2rem !important;
+            line-height: 1.6 !important;
+        }
+        
+        .compact-service-description {
+            font-size: 1.1rem !important;
+            line-height: 1.6 !important;
+        }
+        
+        .compact-service-name {
+            font-size: 1.1rem !important;
+            line-height: 1.4 !important;
+        }
+        
+        .accordion-header {
+            font-size: 1.2rem !important;
+        }
+        
+        p, .service-description, .draft-agenda-section p, .draft-agenda-section input, .draft-agenda-section textarea {
+            font-size: 1.1rem !important;
+            line-height: 1.6 !important;
+        }
+        
+        /* Orange background for Teambuilding section */
+        .service-hero-section:nth-of-type(2) {
+            background: var(--primary-orange) !important;
+        }
+        
+        .service-hero-section:nth-of-type(2) .service-hero-content,
+        .service-hero-section:nth-of-type(2) .service-hero-title,
+        .service-hero-section:nth-of-type(2) .service-hero-subtitle {
+            color: white !important;
+        }
+        
+        /* Orange background for Learning and Development section */
+        .service-hero-section:nth-of-type(3) {
+            background: var(--primary-orange) !important;
+        }
+        
+        .service-hero-section:nth-of-type(3) .service-hero-content,
+        .service-hero-section:nth-of-type(3) .service-hero-title,
+        .service-hero-section:nth-of-type(3) .service-hero-subtitle {
+            color: white !important;
         }
     </style>
     <link rel="stylesheet" href="styles.css?v=20250123">

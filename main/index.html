@@ -10,6 +10,86 @@
     <link rel="icon" type="image/png" href="assets/images/TLGLogo.png">
     <link rel="stylesheet" href="styles.css?v=20250123">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+    
+    <style>
+        /* Move fly-in content up by 33% */
+        #fly-in {
+            transform: translateY(-33%) !important;
+        }
+        
+        /* Make text 33% bigger in fly-in container */
+        #fly-in > div {
+            font-size: 2.66em !important;
+            line-height: 1.4 !important;
+        }
+        
+        /* Ensure all lines have consistent sizing and centering */
+        #fly-in {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        #fly-in > div {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        /* Position static buttons outside fly-in container */
+        .static-nav-buttons {
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            z-index: 10;
+        }
+        
+        /* Make buttons 75% smaller (25% of original size), then increase by 100%, then reduce by 33% */
+        .static-nav-btn {
+            padding: 0.33rem 0.67rem !important;
+            font-size: 0.93rem !important;
+            text-decoration: none;
+            background: rgba(255,255,255,0.95);
+            color: #F39C3D;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .static-nav-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            #fly-in > div {
+                font-size: 1.8em !important;
+            }
+            
+            .static-nav-buttons {
+                flex-direction: column;
+                align-items: center;
+                bottom: 10% !important;
+            }
+            
+            .static-nav-btn {
+                font-size: 0.8rem !important;
+                padding: 0.27rem 0.53rem !important;
+            }
+        }
+    </style>
+    
     <!-- Stripe JavaScript SDK -->
     <script src="https://js.stripe.com/v3/"></script>
 
@@ -69,6 +149,13 @@
             <div><span>Organizational</span> Reboot</div>
             <div>Leadership Team <span>Development</span></div>
         </div>
+        
+        <!-- Static Navigation Buttons - Outside Fly-in Container -->
+        <div class="static-nav-buttons">
+            <a href="facilitation.html" class="static-nav-btn">Facilitation</a>
+            <a href="digital-adoption.html" class="static-nav-btn">Digital Adoption</a>
+            <a href="custom-tools.html" class="static-nav-btn">Web/Apps</a>
+        </div>
     </section>
 
     <!-- Main Hero Section -->
@@ -78,9 +165,7 @@
                 <h1 class="main-hero-title" style="color: white !important;">TransformLocalGov</h1>
                 <p class="main-hero-subtitle" style="color: white !important;">We help local governments improve service delivery, reduce regrettable turnover, and strengthen change resilience.</p>
                 <div class="main-hero-buttons">
-                    <a href="facilitation.html" class="cta-button" style="background: white !important; color: #F39C3D !important; border: 2px solid white !important;">Facilitation</a>
-                    <a href="digital-adoption.html" class="cta-button" style="background: white !important; color: #F39C3D !important; border: 2px solid white !important;">Digital Adoption</a>
-                    <a href="custom-tools.html" class="cta-button" style="background: white !important; color: #F39C3D !important; border: 2px solid white !important;">Web/Apps</a>
+                    <a href="services.html" class="cta-button" style="background: white !important; color: #F39C3D !important; border: 2px solid white !important;">Services</a>
                 </div>
             </div>
         </div>
@@ -150,6 +235,17 @@
             // Clean up URL
             window.history.replaceState({}, document.title, window.location.pathname);
         }
+        
+        // Redirect to hero section after fly-in animation completes once
+        setTimeout(function() {
+            const heroSection = document.querySelector('.main-hero');
+            if (heroSection) {
+                heroSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }, 10000); // 10 seconds to allow one full loop of animation
     </script>
 </body>
 
