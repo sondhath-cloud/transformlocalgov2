@@ -105,7 +105,7 @@ Selected Services:
         $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
         
         // Send email notification
-        mail('info@transformlocalgov.com', $subject, $message, $headers);
+        mail('hello@transformlocalgov.com', $subject, $message, $headers);
         
         echo json_encode([
             'success' => true, 

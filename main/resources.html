@@ -67,11 +67,12 @@
         }
         
         .resource-image img {
-            max-width: 100%;
+            width: 100%;
             height: auto;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            object-fit: contain;
         }
         
         .resource-image img:hover {
@@ -263,6 +264,27 @@
                 </div>
             </div>
 
+            <!-- Our Bathroom Goals Resource -->
+            <div class="resources-grid">
+                <div class="resource-image">
+                    <a href="assets/documents/OurBathroomGoals.pdf" target="_blank" rel="noopener noreferrer">
+                        <img src="assets/images/OurBathroomGoals-thumb.png" alt="'Our Bathroom Goals' A Visual Guide Example" style="border: 2px solid var(--primary-orange); padding: 1rem; background: #fff;" />
+                    </a>
+                </div>
+                <div class="resource-content">
+                    <h2 class="resource-title">&ldquo;Our Bathroom Goals&rdquo;<br>
+                        A Visual Workplace Example</h2>
+                    <p class="resource-description">
+                        Using the relatable example of keeping a home bathroom clean, this resource illustrates how clear expectations, visual references, and concrete actionable steps can help create accountability and measurable progress. The framework demonstrated in this document translates directly to organizational settings where the same process helps teams achieve their goals more effectively.
+                    </p>
+                    <div class="resource-links">
+                        <a href="assets/documents/OurBathroomGoals.pdf" target="_blank" rel="noopener noreferrer" class="resource-link">
+                            <i class="fas fa-file-pdf"></i> Download Guide (PDF)
+                        </a>
+                    </div>
+                </div>
+            </div>
+
             <!-- Coming Soon Section -->
             <div class="coming-soon">
                 <h3>More Resources Coming Soon</h3>
@@ -276,7 +298,7 @@
         <div class="footer-content">
             <div class="footer-text">
                 <p>&copy; 2025 TransformLocalGov. All rights reserved.</p>
-                <p>Email: info@transformlocalgov.com | Phone: 512-521-9888</p>
+                <p>Email: hello@transformlocalgov.com | Phone: 01-602-380-7231</p>
             </div>
             <div class="footer-middle">
                 <a href="careers.html" class="footer-link">Careers</a>

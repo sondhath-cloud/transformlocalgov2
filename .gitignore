@@ -60,3 +60,7 @@ subscriptions_log.txt
 # Backup files
 *.bak
 *.backup
+
+# Deployment archives
+*.zip
+TransformLocalGov-SiteV2-DEPLOY.zip
