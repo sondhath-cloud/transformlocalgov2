@@ -260,10 +260,9 @@
         
         .suggested-activities {
             background: #f8f9fa;
-            border-left: 4px solid var(--primary-orange);
             padding: 1.5rem;
             margin: 1.5rem 0;
-            border-radius: 0 8px 8px 0;
+            border-radius: 8px;
         }
         
         .suggested-activities h4 {
@@ -275,10 +274,82 @@
             align-items: center;
         }
         
-        .suggested-activities h4::before {
-            content: "💡";
-            margin-right: 0.5rem;
-            font-size: 1.1rem;
+        /* Filter controls for blog sections */
+        .blog-filter-controls {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .filter-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-orange);
+        }
+        
+        .filter-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .filter-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .filter-checkbox input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        .filter-checkbox label {
+            font-size: 1rem;
+            cursor: pointer;
+            color: #333;
+        }
+        
+        .filter-actions {
+            display: flex;
+            gap: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid #eee;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn-select-all {
+            background: var(--primary-orange);
+            color: white;
+        }
+        
+        .filter-btn-clear {
+            background: #e9ecef;
+            color: #333;
+        }
+        
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .filter-controls {
+                flex-direction: column;
+            }
         }
         
         .activity-list {
@@ -292,12 +363,10 @@
             margin-bottom: 0.8rem;
             padding: 1rem;
             border-radius: 6px;
-            border-left: 3px solid #e9ecef;
             transition: all 0.2s ease;
         }
         
         .activity-item:hover {
-            border-left-color: var(--primary-orange);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
         
@@ -358,6 +427,110 @@
                 padding: 1rem;
             }
         }
+        
+        /* Toast Notification Styles */
+        .toast-notification {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, var(--primary-orange), #e67e22);
+            color: white;
+            padding: 2.5rem 3rem;
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            z-index: 10000;
+            max-width: 95%;
+            width: 650px;
+            max-height: 90vh;
+            overflow-y: auto;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .toast-notification.show {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+            pointer-events: auto;
+        }
+        
+        .toast-notification.hide {
+            opacity: 0;
+            transform: translate(-50%, -40%);
+        }
+        
+        /* Overlay for popup effect */
+        .toast-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .toast-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .toast-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .toast-icon {
+            font-size: 2rem;
+        }
+        
+        .toast-message {
+            flex: 1;
+        }
+        
+        .toast-message h3 {
+            margin: 0 0 0.75rem 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .toast-message p {
+            margin: 0;
+            font-size: 1.1rem;
+            opacity: 0.95;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 768px) {
+            .toast-notification {
+                width: 95%;
+                padding: 1.2rem 1.5rem;
+            }
+        }
+        
+        /* Fix for iPhone mini - ensure content isn't behind fixed navbar */
+        @media (max-width: 480px) {
+            .two-column-hero {
+                padding-top: 120px !important;
+            }
+        }
+        
+        @media (min-width: 481px) and (max-width: 768px) {
+            .two-column-hero {
+                padding-top: 80px !important;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .two-column-hero {
+                padding-top: 5rem !important;
+            }
+        }
     </style>
 </head>
 
@@ -405,7 +578,7 @@
     </nav>
 
     <!-- Two-Column Hero Section -->
-    <section class="two-column-hero parallax-bg" style="background-image: url('assets/images/video_thumbnail.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; position: relative; min-height: calc(100vh + 50px); padding: 2rem 0;">
+    <section class="two-column-hero parallax-bg" style="background-image: url('assets/images/video_thumbnail.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; position: relative; min-height: calc(100vh + 50px);">
         <!-- Dark overlay for text contrast -->
         <div class="parallax-layer" style="background: rgba(0, 0, 0, 0.5); z-index: 1;"></div>
         
@@ -539,7 +712,7 @@
                             <div class="service-tier basic-tier">
                                 
                 <!-- Blog Entry 1: Stakeholder Engagement -->
-                <div class="blog-entry">
+                <div class="blog-entry" data-category="stakeholder">
                     <div class="blog-header">
                         <h2 class="blog-title">Building Your Change Network</h2>
                         <p class="blog-meta">Stakeholder Engagement and Communication</p>
@@ -579,7 +752,7 @@
                 </div>
 
                 <!-- Blog Entry 2: Impact Assessment -->
-                <div class="blog-entry">
+                <div class="blog-entry" data-category="impact">
                     <div class="blog-header">
                         <h2 class="blog-title">Understanding Your Organization's Readiness</h2>
                         <p class="blog-meta">Impact Assessment and Readiness</p>
@@ -615,7 +788,7 @@
                 </div>
 
                 <!-- Blog Entry 3: Organizational Alignment -->
-                <div class="blog-entry">
+                <div class="blog-entry" data-category="alignment">
                     <div class="blog-header">
                         <h2 class="blog-title">Creating Alignment and Vision</h2>
                         <p class="blog-meta">Organizational Alignment</p>
@@ -651,7 +824,7 @@
                 </div>
 
                 <!-- Blog Entry 4: Planning and Strategy -->
-                <div class="blog-entry">
+                <div class="blog-entry" data-category="planning">
                     <div class="blog-header">
                         <h2 class="blog-title">Strategic Planning for Change Success</h2>
                         <p class="blog-meta">Planning and Strategy Development</p>
@@ -687,7 +860,7 @@
                 </div>
 
                 <!-- Blog Entry 5: Requirements and Design -->
-                <div class="blog-entry">
+                <div class="blog-entry" data-category="requirements">
                     <div class="blog-header">
                         <h2 class="blog-title">Human-Centered System Selection</h2>
                         <p class="blog-meta">Requirements and Design Input</p>
@@ -723,7 +896,7 @@
                 </div>
 
                 <!-- Blog Entry 6: Early Engagement -->
-                <div class="blog-entry">
+                <div class="blog-entry" data-category="engagement">
                     <div class="blog-header">
                         <h2 class="blog-title">Building Momentum Early</h2>
                         <p class="blog-meta">Early Engagement Activities</p>
@@ -759,7 +932,7 @@
                 </div>
 
                 <!-- Blog Entry 7: Risk Management -->
-                <div class="blog-entry">
+                <div class="blog-entry" data-category="risk">
                     <div class="blog-header">
                         <h2 class="blog-title">Proactive Risk Management</h2>
                         <p class="blog-meta">Risk Management</p>
@@ -1712,6 +1885,37 @@
         const selectedPreImplItems = {};
         const selectedImplementingItems = {};
 
+        function showToast(title, message, showFilters = false) {
+            const toast = document.getElementById('toast');
+            const overlay = document.getElementById('toast-overlay');
+            const toastTitle = document.getElementById('toast-title');
+            const toastDescription = document.getElementById('toast-description');
+            const toastFilters = document.getElementById('toast-filters');
+            
+            toastTitle.textContent = title;
+            toastDescription.textContent = message;
+            
+            if (showFilters) {
+                toastFilters.style.display = 'block';
+            } else {
+                toastFilters.style.display = 'none';
+            }
+            
+            // Show overlay and toast
+            overlay.classList.add('show');
+            toast.classList.remove('hide');
+            toast.classList.add('show');
+        }
+        
+        function hideToast() {
+            const toast = document.getElementById('toast');
+            const overlay = document.getElementById('toast-overlay');
+            
+            toast.classList.remove('show');
+            toast.classList.add('hide');
+            overlay.classList.remove('show');
+        }
+
         function showImplementationServices() {
             const status = document.getElementById('implementationStatus').value;
             const consultingSection = document.getElementById('consulting');
@@ -1727,23 +1931,25 @@
             if (status) {
                 consultingSection.style.display = 'block';
                 
-                // Show selected option
+                // Determine which message to show based on selection
+                let toastTitle, toastMessage;
                 if (status === 'not-selected') {
                     notSelectedOptions.style.display = 'block';
+                    toastTitle = 'Planning Ahead';
+                    toastMessage = 'We have suggestions for organizations who haven\'t selected a system yet. Scroll down to see the suggested activities.';
                 } else if (status === 'implementing') {
                     implementingOptions.style.display = 'block';
+                    toastTitle = 'Ready for Implementation';
+                    toastMessage = 'We have suggestions for organizations preparing for or actively implementing. Scroll down to see the suggested activities.';
+                }
+                
+                // Show toast notification with filters
+                if (toastTitle) {
+                    showToast(toastTitle, toastMessage, true);
                 }
                 
                 // Show CTA section
                 ctaSection.style.display = 'block';
-                
-                // Auto-scroll to the service window
-                setTimeout(() => {
-                    consultingSection.scrollIntoView({ 
-                        behavior: 'smooth', 
-                        block: 'start' 
-                    });
-                }, 100);
             } else {
                 // Hide consulting section if no status selected
                 consultingSection.style.display = 'none';
@@ -2125,8 +2331,104 @@
                     button.classList.add('enhanced-btn');
                 }
             });
+            
         });
+        
+        // Select all toast filters
+        function selectAllToastFilters() {
+            const checkboxes = document.querySelectorAll('#toast-filters .filter-checkbox input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = true;
+            });
+        }
+        
+        // Clear all toast filters
+        function clearAllToastFilters() {
+            const checkboxes = document.querySelectorAll('#toast-filters .filter-checkbox input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+        }
+        
+        // Apply filters and continue
+        function applyFiltersAndContinue() {
+            // Hide toast
+            hideToast();
+            
+            // Filter blog entries based on toast checkboxes
+            const checkboxes = document.querySelectorAll('#toast-filters .filter-checkbox input[type="checkbox"]');
+            const blogEntries = document.querySelectorAll('.blog-entry');
+            
+            // Start with all hidden
+            blogEntries.forEach(entry => {
+                entry.style.display = 'none';
+            });
+            
+            // Show only checked categories
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    const category = checkbox.dataset.category;
+                    blogEntries.forEach(entry => {
+                        if (entry.dataset.category === category) {
+                            entry.style.display = 'block';
+                        }
+                    });
+                }
+            });
+        }
     </script>
+    
+    <!-- Toast Overlay -->
+    <div id="toast-overlay" class="toast-overlay"></div>
+    
+    <!-- Toast Notification with Filters -->
+    <div id="toast" class="toast-notification">
+        <div class="toast-content">
+            <div class="toast-icon">✓</div>
+            <div class="toast-message">
+                <h3 id="toast-title"></h3>
+                <p id="toast-description"></p>
+                <div id="toast-filters" style="display: none; margin-top: 1.5rem;">
+                    <div class="filter-title" style="font-size: 1rem; margin-bottom: 1rem; color: white;">Select areas of interest:</div>
+                    <div class="filter-controls" style="color: white; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+                        <div class="filter-checkbox">
+                            <input type="checkbox" id="toast-filter-stakeholder" data-category="stakeholder" checked style="width: 18px; height: 18px; cursor: pointer;">
+                            <label for="toast-filter-stakeholder" style="color: white;">Stakeholder Engagement</label>
+                        </div>
+                        <div class="filter-checkbox">
+                            <input type="checkbox" id="toast-filter-impact" data-category="impact" checked style="width: 18px; height: 18px; cursor: pointer;">
+                            <label for="toast-filter-impact" style="color: white;">Impact Assessment</label>
+                        </div>
+                        <div class="filter-checkbox">
+                            <input type="checkbox" id="toast-filter-alignment" data-category="alignment" checked style="width: 18px; height: 18px; cursor: pointer;">
+                            <label for="toast-filter-alignment" style="color: white;">Organizational Alignment</label>
+                        </div>
+                        <div class="filter-checkbox">
+                            <input type="checkbox" id="toast-filter-planning" data-category="planning" checked style="width: 18px; height: 18px; cursor: pointer;">
+                            <label for="toast-filter-planning" style="color: white;">Planning & Strategy</label>
+                        </div>
+                        <div class="filter-checkbox">
+                            <input type="checkbox" id="toast-filter-requirements" data-category="requirements" checked style="width: 18px; height: 18px; cursor: pointer;">
+                            <label for="toast-filter-requirements" style="color: white;">Requirements & Design</label>
+                        </div>
+                        <div class="filter-checkbox">
+                            <input type="checkbox" id="toast-filter-engagement" data-category="engagement" checked style="width: 18px; height: 18px; cursor: pointer;">
+                            <label for="toast-filter-engagement" style="color: white;">Early Engagement</label>
+                        </div>
+                        <div class="filter-checkbox">
+                            <input type="checkbox" id="toast-filter-risk" data-category="risk" checked style="width: 18px; height: 18px; cursor: pointer;">
+                            <label for="toast-filter-risk" style="color: white;">Risk Management</label>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
+                        <button class="filter-btn filter-btn-select-all" onclick="selectAllToastFilters()" style="flex: 1; padding: 0.75rem;">Select All</button>
+                        <button class="filter-btn filter-btn-clear" onclick="clearAllToastFilters()" style="flex: 1; padding: 0.75rem;">Clear All</button>
+                    </div>
+                    <button onclick="applyFiltersAndContinue()" style="width: 100%; margin-top: 1rem; padding: 0.875rem 1.5rem; background: white; color: var(--primary-orange); border: 2px solid white; border-radius: 6px; font-weight: 600; cursor: pointer;">Continue with Selected Areas</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

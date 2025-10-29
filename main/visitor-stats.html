@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor Statistics - Transform Local Gov</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+        
+        .controls {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f5f5f5;
+            border-radius: 8px;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: end;
+        }
+        
+        .control-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+        
+        input[type="date"] {
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        
+        button {
+            padding: 0.75rem 2rem;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #5568d3;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-card h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        
+        .stat-card .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+        
+        .error {
+            background: #fee;
+            color: #c33;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background: #f5f5f5;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        tr:hover {
+            background: #f9f9f9;
+        }
+        
+        .chart-container {
+            margin: 2rem 0;
+            padding: 1rem;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Visitor Statistics Dashboard</h1>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="start-date">Start Date</label>
+                <input type="date" id="start-date" value="">
+            </div>
+            <div class="control-group">
+                <label for="end-date">End Date</label>
+                <input type="date" id="end-date" value="">
+            </div>
+            <button onclick="loadStats()">Load Statistics</button>
+            <button onclick="resetDates()">Reset to Last 30 Days</button>
+        </div>
+        
+        <div id="loading" class="loading">Loading statistics...</div>
+        <div id="error" style="display: none;"></div>
+        
+        <div id="stats-container" style="display: none;">
+            <h2 style="margin-top: 2rem; margin-bottom: 1rem;">Overall Statistics</h2>
+            <div id="stats-grid" class="stats-grid"></div>
+            
+            <h2 style="margin-top: 2rem; margin-bottom: 1rem;">Daily Visitor Count</h2>
+            <div id="chart-container" class="chart-container"></div>
+            
+            <h2 style="margin-top: 2rem; margin-bottom: 1rem;">Top Pages</h2>
+            <table id="top-pages-table">
+                <thead>
+                    <tr>
+                        <th>Page URL</th>
+                        <th>Visits</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script>
+        // Set default dates
+        function resetDates() {
+            const endDate = new Date();
+            const startDate = new Date();
+            startDate.setDate(startDate.getDate() - 30);
+            
+            document.getElementById('start-date').value = startDate.toISOString().split('T')[0];
+            document.getElementById('end-date').value = endDate.toISOString().split('T')[0];
+            
+            loadStats();
+        }
+        
+        // Load statistics
+        function loadStats() {
+            const startDate = document.getElementById('start-date').value;
+            const endDate = document.getElementById('end-date').value;
+            
+            // Show loading
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('error').style.display = 'none';
+            document.getElementById('stats-container').style.display = 'none';
+            
+            fetch(`api/get-visitor-stats.php?start_date=${startDate}&end_date=${endDate}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('loading').style.display = 'none';
+                    
+                    if (data.success) {
+                        displayStats(data);
+                        document.getElementById('stats-container').style.display = 'block';
+                    } else {
+                        showError(data.error || 'Failed to load statistics');
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('loading').style.display = 'none';
+                    showError('Error loading statistics: ' + error.message);
+                });
+        }
+        
+        // Display statistics
+        function displayStats(data) {
+            // Overall stats
+            const statsHtml = `
+                <div class="stat-card">
+                    <h3>Total Visits</h3>
+                    <div class="number">${data.overall_stats.total_visits}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Unique Sessions</h3>
+                    <div class="number">${data.overall_stats.total_unique_sessions}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Unique IPs</h3>
+                    <div class="number">${data.overall_stats.total_unique_ips}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Days Tracked</h3>
+                    <div class="number">${data.overall_stats.total_days}</div>
+                </div>
+            `;
+            document.getElementById('stats-grid').innerHTML = statsHtml;
+            
+            // Top pages
+            const topPagesHtml = data.top_pages.map(page => `
+                <tr>
+                    <td>${page.page_url}</td>
+                    <td>${page.visit_count}</td>
+                </tr>
+            `).join('');
+            document.querySelector('#top-pages-table tbody').innerHTML = topPagesHtml;
+            
+            // Simple bar chart for daily stats
+            if (data.daily_stats.length > 0) {
+                const maxVisits = Math.max(...data.daily_stats.map(d => parseInt(d.total_visits)));
+                const chartHtml = data.daily_stats.map(day => {
+                    const barWidth = (day.total_visits / maxVisits) * 100;
+                    return `
+                        <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                            <div style="width: 120px; font-size: 0.9rem;">${day.visit_date}</div>
+                            <div style="flex: 1; margin: 0 1rem; position: relative;">
+                                <div style="background: #667eea; height: 30px; width: ${barWidth}%; border-radius: 4px; display: flex; align-items: center; padding-left: 0.5rem; color: white; font-weight: 600;">
+                                    ${day.total_visits}
+                                </div>
+                            </div>
+                            <div style="width: 100px; font-size: 0.85rem; color: #666;">${day.unique_sessions} sessions</div>
+                        </div>
+                    `;
+                }).join('');
+                document.getElementById('chart-container').innerHTML = chartHtml;
+            }
+        }
+        
+        // Show error message
+        function showError(message) {
+            const errorDiv = document.getElementById('error');
+            errorDiv.innerHTML = `<div class="error">${message}</div>`;
+            errorDiv.style.display = 'block';
+        }
+        
+        // Initialize with default dates
+        window.onload = function() {
+            resetDates();
+        };
+    </script>
+</body>
+</html>
+

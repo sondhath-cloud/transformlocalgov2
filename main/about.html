@@ -102,6 +102,8 @@
         .team-section-container section .cards .card {
           position: relative;
           cursor: pointer;
+          min-height: 500px;
+          overflow: hidden;
         }
         .team-section-container section .cards .card h3,
         .team-section-container section .cards .card p {
@@ -111,12 +113,15 @@
           font-size: clamp(1rem, 0.9167rem + 0.2667vw, 1.25rem);
           font-weight: 400;
           color: #f6f6f6;
+          margin-bottom: 0.5rem;
+          line-height: 1.3;
         }
         .team-section-container section .cards .card p {
           font-size: clamp(0.85rem, 0.75rem + 0.32vw, 1.15rem);
           letter-spacing: 0.12rem;
           font-weight: 300;
           max-width: 100%;
+          line-height: 1.4;
         }
         .team-section-container section .cards .card::before {
           position: absolute;
@@ -156,8 +161,9 @@
           left: 0;
           color: #fff;
           width: 100%;
-          padding: 1.875rem 1.25rem;
+          padding: 2.5rem 1.25rem 1.875rem;
           text-align: center;
+          min-height: 30%;
         }
         .team-section-container section .cards .card-content ul {
           display: flex;
@@ -291,6 +297,15 @@
           .bio-text {
             font-size: 1rem;
           }
+          
+          .team-section-container section .cards .card {
+            min-height: 450px;
+          }
+          
+          .team-section-container section .cards .card-content {
+            padding: 2rem 1rem 1.5rem;
+            min-height: 25%;
+          }
         }
         
         @media (max-width: 480px) {
@@ -315,6 +330,23 @@
           .expertise-tag {
             font-size: 0.85rem;
             padding: 0.4rem 0.8rem;
+          }
+          
+          .team-section-container section .cards .card {
+            min-height: 400px;
+          }
+          
+          .team-section-container section .cards .card-content {
+            padding: 1.5rem 0.75rem 1.25rem;
+            min-height: 28%;
+          }
+          
+          .team-section-container section .cards .card h3 {
+            font-size: clamp(0.9rem, 0.8167rem + 0.2667vw, 1rem);
+          }
+          
+          .team-section-container section .cards .card p {
+            font-size: clamp(0.75rem, 0.65rem + 0.32vw, 0.95rem);
           }
         }
 

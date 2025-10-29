@@ -158,20 +158,6 @@
         </div>
     </section>
 
-    <!-- Main Hero Section -->
-    <section class="main-hero" style="background: #F39C3D !important;">
-        <div class="main-hero-content">
-            <div class="main-hero-text">
-                <h1 class="main-hero-title" style="color: white !important;">TransformLocalGov</h1>
-                <p class="main-hero-subtitle" style="color: white !important;">We help local governments improve service delivery, reduce regrettable turnover, and strengthen change resilience.</p>
-                <div class="main-hero-buttons">
-                    <a href="services.html" class="cta-button" style="background: white !important; color: #F39C3D !important; border: 2px solid white !important;">Services</a>
-                </div>
-            </div>
-        </div>
-        
-    </section>
-
     <!-- Video Modal -->
     <div id="videoModal" class="video-modal">
         <div class="video-modal-content">
@@ -236,16 +222,7 @@
             window.history.replaceState({}, document.title, window.location.pathname);
         }
         
-        // Redirect to hero section after fly-in animation completes once
-        setTimeout(function() {
-            const heroSection = document.querySelector('.main-hero');
-            if (heroSection) {
-                heroSection.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        }, 10000); // 10 seconds to allow one full loop of animation
+        // Fly-in animation will stay on screen
     </script>
 </body>
 
