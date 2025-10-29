@@ -1,3 +1,4 @@
+<?php require_once 'api/track-visitor.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
