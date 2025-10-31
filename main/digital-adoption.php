@@ -533,6 +533,9 @@
             }
         }
     </style>
+    
+    <!-- Analytics Tracker -->
+    <script src="/main/analytics-tracker.js"></script>
 </head>
 
 <body class="digital-adoption">

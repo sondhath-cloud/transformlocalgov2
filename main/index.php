@@ -93,6 +93,9 @@
     
     <!-- Stripe JavaScript SDK -->
     <script src="https://js.stripe.com/v3/"></script>
+    
+    <!-- Analytics Tracker -->
+    <script src="/main/analytics-tracker.js"></script>
 
 </head>
 

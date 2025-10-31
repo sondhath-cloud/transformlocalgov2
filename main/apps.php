@@ -11,6 +11,9 @@
     <link rel="icon" type="image/png" href="TLGLogo.png">
     <link rel="stylesheet" href="styles.css">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+    
+    <!-- Analytics Tracker -->
+    <script src="/main/analytics-tracker.js"></script>
 </head>
 
 <body>

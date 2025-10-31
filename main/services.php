@@ -1040,6 +1040,9 @@
         
     </style>
     <link rel="stylesheet" href="styles.css?v=20250123">
+    
+    <!-- Analytics Tracker -->
+    <script src="/main/analytics-tracker.js"></script>
 </head>
 
 <body>
