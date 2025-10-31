@@ -1,0 +1,12 @@
+# Point root to main directory
+RewriteEngine On
+RewriteBase /
+
+# Redirect root to main/index.php
+DirectoryIndex main/index.html
+
+# If file doesn't exist in root, serve from main
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ main/$1 [L]
+

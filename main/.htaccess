@@ -1,0 +1,6 @@
+# Allow directory listing and access
+Options -Indexes
+DirectoryIndex index.html index.php
+
+# Set default charset
+AddDefaultCharset UTF-8
